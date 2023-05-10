@@ -34,9 +34,8 @@ footer,
     width: 100%;
 }
 
-.first-container
-{
-	color: white;
+.first-container {
+    color: white;
     flex: 1;
 }
 
@@ -44,7 +43,7 @@ footer,
   UTILITY
 */
 
-.center{
+.center {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -149,4 +148,17 @@ footer div a {
     text-align: left;
     padding: 1%;
 
+}
+
+/*
+  LOGIN STYLE
+*/
+
+.fieldset-form{
+    width: 50%;
+}
+
+.form-a {
+    color: aqua;
+    text-decoration: none;
 }

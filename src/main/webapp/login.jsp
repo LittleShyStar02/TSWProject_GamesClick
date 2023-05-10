@@ -11,23 +11,32 @@
 <body>
  	<%@include file="header.jsp" %>  
  	
- 	<div class="first-container">
-		<h1>Login</h1>
-		<form class="left">
-			<label for="email">Email</label>
-			<input type="email" id="email" name="email" placeholder="Email">
-			<label for="password">Password</label>
-			<input type="password" id="password" name="password" placeholder="Password">
-			<input type="submit" value="Accedi">
-			<!-- <div class="form-error"></div> -->
-		</form>
-		<div>
-			<p>Non hai ancora un account?</p>
-			<a href="#">Registrati</a>
-		</div>
-		<div>
-			<a href="#">Ho dimenticato la password</a>
-		</div>
+ 	<div class="first-container center">
+		<fieldset class="fieldset-form">
+			<legend><h1 style="color: red">Login</h1></legend>
+			<br>
+			<form class="center">
+				<label for="email">Email</label>
+				<br>
+				<input type="email" id="email" name="email" placeholder="Email">
+				<br>
+				<label for="password">Password</label>
+				<br>
+				<input type="password" id="password" name="password" placeholder="Password">
+				<br>
+				<input type="submit" value="Accedi">
+				<br>
+				<!-- <div class="form-error"></div> -->
+			</form>
+			<div>
+				<a href="#" class="form-a">Non hai ancora un account? Registrati</a>
+			</div>
+			<br>
+			<div>
+				<a href="#" class="form-a">Ho dimenticato la password</a>
+			</div>
+		</fieldset>
+		
 	</div>
  	
  	<%@include file="footer.jsp" %>
