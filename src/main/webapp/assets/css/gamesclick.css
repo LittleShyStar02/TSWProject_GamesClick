@@ -1,0 +1,152 @@
+/*
+  UNIVERSAL STYLE
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+  BIG CONTAINER STYLE
+*/
+
+body {
+    background-image: url("../images/background.png");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+header,
+footer,
+.first-container {
+    background-color: transparent;
+    box-shadow: 0 0 5px 5px black;
+    height: auto;
+    min-height: 50px;
+    width: 100%;
+}
+
+.first-container
+{
+	color: white;
+    flex: 1;
+}
+
+/*
+  UTILITY
+*/
+
+.center{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/*
+  HEADER STYLE
+*/
+
+header nav {
+    display: flex
+}
+
+header nav ul {
+    list-style-type: none;
+    width: 60%;
+}
+
+header nav ul li {
+    display: block;
+    float: left;
+    font-size: 22px;
+    margin: 1%;
+    padding: 3%;
+    padding-top: 4%;
+    text-align: center;
+    width: 20%;
+}
+
+header nav ul li a {
+    color: cyan;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header nav ul li a:hover,
+.header-logo-text:hover {
+    background-color: gray;
+    border: 20px solid gray;
+    border-radius: 100px;
+    box-shadow: 0 0 15px 15px gray;
+}
+
+header nav ul li a:hover {
+    color: white;
+}
+
+.header-logo-text:hover {
+    color: red;
+}
+
+.header-logo {
+    margin: 1%;
+    padding: 1%;
+    padding-top: 2%;
+    text-align: center;
+    width: 20%;
+}
+
+.header-logo-text {
+    color: lime;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header-icon {
+    color: orange;
+    margin: 1%;
+    padding: 1%;
+    text-align: center;
+    width: 5%;
+}
+
+.header-image {
+    height: auto;
+    width: 60%;
+}
+
+.header-image-text {
+    color: orange;
+    text-decoration: none;
+}
+
+/*
+  FOOTER STYLE
+*/
+
+footer div a {
+    color: orange;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.footer-text {
+    color: white;
+    font-size: 20px;
+    margin-left: 1%;
+    text-align: left;
+    padding: 1%;
+
+}
