@@ -13,7 +13,7 @@
  	
  	<div class="first-container center">
 		<fieldset class="fieldset-form">
-			<legend><h1 style="color: red">Login</h1></legend>
+			<legend>Login</legend>
 			<br>
 			<form class="center">
 				<label for="email">Email</label>
@@ -35,6 +35,7 @@
 			<div>
 				<a href="#" class="form-a">Ho dimenticato la password</a>
 			</div>
+			<br>
 		</fieldset>
 		
 	</div>

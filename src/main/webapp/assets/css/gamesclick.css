@@ -158,6 +158,11 @@ footer div a {
     width: 50%;
 }
 
+.fieldset-form legend{
+	color: red;
+	font-size: 42px;
+	font-weight: bold;
+}
 
 .form-a {
     color: aqua;

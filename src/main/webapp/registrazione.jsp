@@ -13,7 +13,7 @@
  	
  	<div class="first-container center">
 		<fieldset class="fieldset-form">
-			<legend><h1 style="color: red">Registrazione</h1></legend>
+			<legend>Registrazione</legend>
 			<br>
 			<form class="center">
 				<label for="nome">Nome</label>
@@ -36,9 +36,10 @@
 				<br>
 				<input type="submit" value="Registrati">
 				<br>
-				</fieldset>
-        	<!-- <div class="form-error"></div> -->
-       	 	</form>
+				
+        		<!-- <div class="form-error"></div> -->
+        	</form>
+        </fieldset>
     </div>
  	
  	<%@include file="footer.jsp" %>
