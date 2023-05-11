@@ -23,7 +23,7 @@
 				<input type="text" name="object" required>
 				<br>
 				<label for="note">Richiesta</label>
-				<textarea name="note" cols="30" rows="10" required style="width:407px; height: 245px; resize:none"></textarea>
+				<textarea name="note" cols="30" rows="10" required></textarea>
 				<br>
 				<input type="submit" value="Invia Richiesta">
 				<br>
