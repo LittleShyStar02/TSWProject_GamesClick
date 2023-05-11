@@ -162,7 +162,7 @@ footer div a {
 }
 
 .fieldset-form legend{
-	color: red;
+	color: orange;
 	font-size: 42px;
 	font-weight: bold;
 }
@@ -172,3 +172,8 @@ footer div a {
     text-decoration: none;
 }
 
+.textarea-lock{
+    width: 350px; 
+    height: 190px; 
+    resize: none;
+}
