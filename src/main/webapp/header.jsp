@@ -3,24 +3,24 @@
 <header>
 	<nav>
 		<div class="header-logo">
-			<a href="" class="header-logo-text">GamesClick</a>
+			<a href="index.jsp" class="header-logo-text">GamesClick</a>
 		</div>
 		<ul class="header-ul">
 			<li>
-				<a href="">Negozio</a>
+				<a href="negozio.jsp">Negozio</a>
 			</li>
 			<li>
-				<a href="">Assistenza</a>
+				<a href="assistenza.jsp">Assistenza</a>
 			</li>
 			<li>
 				<a href="">Informazioni</a>
 			</li>
 		</ul>
 		<div class="header-icon">
-			<a href="" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image">Carrello</a>
+			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image">Carrello</a>
 		</div>
 		<div class="header-icon">
-			<a href="" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image">Account</a>
+			<a href="account.jsp" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image">Account</a>
 		</div>
 	</nav>
 </header>

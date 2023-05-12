@@ -15,14 +15,14 @@
 		<fieldset class="fieldset-form">
 			<legend>Login</legend>
 			<br>
-			<form class="center">
+			<form class="form-w1 center">
 				<label for="email">Email</label>
 				<br>
-				<input type="email" id="email" name="email" placeholder="Email">
+				<input type="email" id="email" name="email" size="64" placeholder="Email">
 				<br>
 				<label for="password">Password</label>
 				<br>
-				<input type="password" id="password" name="password" placeholder="Password">
+				<input type="password" id="password" name="password" size="64" placeholder="Password">
 				<br>
 				<input type="submit" value="Accedi">
 				<br>
@@ -37,7 +37,6 @@
 			</div>
 			<br>
 		</fieldset>
-		
 	</div>
  	
  	<%@include file="footer.jsp" %>

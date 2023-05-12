@@ -15,26 +15,32 @@
 		<fieldset class="fieldset-form">
 			<legend>Registrazione</legend>
 			<br>
-			<form class="center">
+			<form class="form-w1 center">
 				<label for="nome">Nome</label>
-				<input type="text" id="nome" name="nome" placeholder="Nome" required>
+				<br>
+				<input type="text" id="nome" name="nome" size="32" placeholder="Nome" required>
 				<br>
 				<label for="cognome">Cognome</label>
-				<input type="text" id="cognome" name="cognome" placeholder="Cognome" required>
+				<br>
+				<input type="text" id="cognome" name="cognome" size="32" placeholder="Cognome" required>
 				<br>
 				<label for="email">Email</label>
-				<input type="email" id="email" name="email" placeholder="Email" required>
+				<br>
+				<input type="email" id="email" name="email" size="64" placeholder="Email" required>
 				<br>
 				<label for="password">Password</label>
-				<input type="password" id="password" name="password" placeholder="Password" required>
+				<br>
+				<input type="password" id="password" name="password" size="64" placeholder="Password" required>
 				<br>
 				<label for="conferma_password">Conferma password:</label>
-				<input type="password" id="conferma_password" name="conferma_password" placeholder="Conferma Password" required>
+				<br>
+				<input type="password" id="conferma_password" name="conferma_password" size="64" placeholder="Conferma Password" required>
 				<br>
 				<label for="data_di_nascita">Data di nascita:</label>
+				<br>
 				<input type="date" id="data_di_nascita" name="data_di_nascita" required>
 				<br>
-				<input type="submit" value="Registrati">
+				<input type="submit" value="Registrati" size="32">
 				<br>
 				
         		<!-- <div class="form-error"></div> -->
