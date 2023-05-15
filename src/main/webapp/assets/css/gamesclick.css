@@ -182,6 +182,7 @@ footer div a {
 
 .textarea-lock {
     height: 16em;
+    padding: 1%;
     resize: none;
     width: 80%;
 }

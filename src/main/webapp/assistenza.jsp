@@ -26,6 +26,7 @@
 				<input type="text" name="object" size="64" required>
 				<br>
 				<label for="note">Richiesta</label>
+				<br>
 				<textarea class="textarea-lock" name="note" required></textarea>
 				<br>
 				<input type="submit" value="Invia Richiesta">
