@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Assistenza</display-name>
+    <servlet-name>Assistenza</servlet-name>
+    <servlet-class>it.project.Assistenza</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Assistenza</servlet-name>
+    <url-pattern>/Assistenza</url-pattern>
+  </servlet-mapping>
 </web-app>
