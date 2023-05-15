@@ -58,7 +58,23 @@ footer,
 */
 
 header nav {
-    display: flex
+    display: flex;
+    flex-direction: row;
+}
+
+.header-logo {
+    margin: 1%;
+    padding: 1%;
+    padding-top: 2%;
+    text-align: center;
+    width: 20%;
+}
+
+.header-logo-text {
+    color: lime;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 header nav ul {
@@ -99,21 +115,6 @@ header nav ul li a:hover {
     color: red;
 }
 
-.header-logo {
-    margin: 1%;
-    padding: 1%;
-    padding-top: 2%;
-    text-align: center;
-    width: 20%;
-}
-
-.header-logo-text {
-    color: lime;
-    font-size: 26px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
 .header-icon {
     color: orange;
     margin: 1%;
@@ -125,11 +126,6 @@ header nav ul li a:hover {
 .header-image {
     height: auto;
     width: 60%;
-}
-
-.header-image-text {
-    color: orange;
-    text-decoration: none;
 }
 
 /*
@@ -189,3 +185,8 @@ footer div a {
     resize: none;
     width: 80%;
 }
+
+/*
+  Media Query
+*/
+@media only screen and (min-width: 770px) {}

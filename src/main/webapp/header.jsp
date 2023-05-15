@@ -17,10 +17,10 @@
 			</li>
 		</ul>
 		<div class="header-icon">
-			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image">Carrello</a>
+			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image"></a>
 		</div>
 		<div class="header-icon">
-			<a href="account.jsp" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image">Account</a>
+			<a href="account.jsp" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image"></a>
 		</div>
 	</nav>
 </header>
