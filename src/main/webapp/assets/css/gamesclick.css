@@ -45,6 +45,7 @@ footer,
   UTILITY
 */
 
+
 .center {
     align-items: center;
     display: flex;
@@ -128,6 +129,7 @@ header nav ul li a:hover {
     width: 60%;
 }
 
+
 /*
   FOOTER STYLE
 */
@@ -191,3 +193,13 @@ footer div a {
   Media Query
 */
 @media only screen and (min-width: 770px) {}
+
+
+/* Negozio style*/
+
+
+.shop-bar {
+    position: absolute;
+    left: 5%;
+    top: 25%;
+}

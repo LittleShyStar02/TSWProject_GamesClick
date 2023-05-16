@@ -12,12 +12,14 @@
  	<%@include file="header.jsp" %>  
  	
  	<div class="first-container">
-		<form>
-			<label for="search">Cerca un gioco: </label>
-			<input type="text" id="search" name="search" placeholder="Inserisci il nome del gioco">
-			<input type="submit" value="Cerca">
-			<!-- <div class="form-error"></div> -->
-		</form>
+ 		<div class="shop-bar">
+			<form>
+				<label for="search">Cerca un gioco: </label>
+				<input type="text" id="search" name="search" placeholder="Inserisci il nome del gioco">
+				<input type="submit" value="Cerca">
+				<!-- <div class="form-error"></div> -->
+			</form>
+		</div>
 	</div>
  	
  	<%@include file="footer.jsp" %>
