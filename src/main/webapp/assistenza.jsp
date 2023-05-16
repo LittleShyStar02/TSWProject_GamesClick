@@ -16,7 +16,7 @@
 
 <body>
  	<%@include file="header.jsp" %>
- 	
+ 	 
  	<div class="first-container center">
  		<h1 style="color: rgb(255,0,255);">Assistenza</h1>
 		<fieldset class="fieldset-form">
