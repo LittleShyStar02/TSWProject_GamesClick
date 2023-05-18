@@ -94,13 +94,13 @@ header nav ul li {
     width: 20%;
 }
 
-header nav ul li a {
+.header-ul li a {
     color: cyan;
     font-weight: bold;
     text-decoration: none;
 }
 
-header nav ul li a:hover,
+.header-ul li a:hover,
 .header-logo-text:hover {
     background-color: gray;
     border: 20px solid gray;
@@ -129,6 +129,45 @@ header nav ul li a:hover {
     width: 60%;
 }
 
+
+/*
+  ACCOUNT DROPDOWN
+*/
+.account-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.account-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 80px;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 2%;
+}
+
+.account-dropdown:hover .account-dropdown-content {
+    display: block;
+}
+
+.account-dropdown , .account-dropdown-content {
+    border: black;
+    border-style: double;
+}
+
+.account-dropdown-a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.account-dropdown-a:hover {
+    color: black;
+    font-weight: bold;
+}
 
 /*
   FOOTER STYLE
