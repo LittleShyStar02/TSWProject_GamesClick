@@ -23,8 +23,7 @@ public class ALogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("userEmail", "prova");
-		request.getServletContext().getRequestDispatcher("/Home").forward(request, response);;
+		// code here
 	}
 
 	/**

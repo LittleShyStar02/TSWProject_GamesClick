@@ -10,7 +10,7 @@
 				<a href="TSWProject_GamesClick/Negozio">Negozio</a>
 			</li>
 			<li>
-				<a href="assistenza.jsp">Assistenza</a>
+				<a href="TSWProject_GamesClick/Assistenza">Assistenza</a>
 			</li>
 			<li>
 				<a href="#">Informazioni</a>
@@ -31,7 +31,7 @@
 						}
 						else
 						{
-							out.print("<li><a href=\"/TSWProject_GamesClick/ALogin\" class=\"account-dropdown-a\">Login</a>");
+							out.print("<li><a href=\"/TSWProject_GamesClick/Login\" class=\"account-dropdown-a\">Login</a>");
 						}
 					%>
 				</ul>

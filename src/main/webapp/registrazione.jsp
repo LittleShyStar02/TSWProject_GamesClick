@@ -45,6 +45,7 @@
 				
         		<!-- <div class="form-error"></div> -->
         	</form>
+        	<p id="userMessage"></p>
         </fieldset>
     </div>
  	

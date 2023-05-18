@@ -33,7 +33,7 @@
 			</div>
 			<br>
 			<div>
-				<a href="#" class="form-a">Ho dimenticato la password</a>
+				<p id="userMessage"></p>
 			</div>
 			<br>
 		</fieldset>
