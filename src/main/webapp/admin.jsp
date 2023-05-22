@@ -32,8 +32,8 @@
 	<%@include file="header.jsp" %>
 	<div class="first-container center">
 
-        <button onclick="showFieldset('fieldset_catalogo', 'fieldset_ordini')">Gestione catalogo</button>
-        <button onclick="showFieldset('fieldset_ordini', 'fieldset_catalogo')">Gestione ordini</button>
+        <button class="admin-button1" onclick="showFieldset('fieldset_catalogo', 'fieldset_ordini')">Gestione catalogo</button>
+        <button class="admin-button2" onclick="showFieldset('fieldset_ordini', 'fieldset_catalogo')">Gestione ordini</button>
         
         <br>
         <br>
