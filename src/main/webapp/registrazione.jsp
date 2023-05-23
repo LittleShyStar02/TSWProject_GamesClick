@@ -15,7 +15,7 @@
 		<fieldset class="fieldset-form">
 			<legend>Registrazione</legend>
 			<br>
-			<p id="userMessage" style="color: yellow;"></p>
+			<%@include file="errorbox.jsp" %>
 			<br>
 			<form action="ARegistrazione" method="get" class="form-w1 center">
 				<label for="nome">Nome</label>

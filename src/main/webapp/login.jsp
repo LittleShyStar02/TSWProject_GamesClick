@@ -12,13 +12,9 @@
  	<%@include file="header.jsp" %>  
  	
  	<div class="first-container center">
- 		<%
- 			if(request.getSession().getAttribute("userMessage") != null)
- 			{
- 				out.print("<div><p id=\"userMessage\">" + request.getSession().getAttribute("userMessage") + "</p></div>");
- 				request.getSession().removeAttribute("userMessage");
- 			}
- 		%>
+ 		
+ 		<%@include file="errorbox.jsp" %>
+ 		
 		<fieldset class="fieldset-form">
 			<legend>Login</legend>
 			<br>

@@ -55,6 +55,20 @@ footer,
 }
 
 /*
+  ERROR BOX
+*/
+.error-box {
+    border-style: solid;
+    border-color: #FF8000;
+    background-color: #FFB266;
+    color: black;
+    font-size: 18px;
+    height: 20%;
+    padding: 1%;
+    width: 50%;
+}
+
+/*
   HEADER STYLE
 */
 
