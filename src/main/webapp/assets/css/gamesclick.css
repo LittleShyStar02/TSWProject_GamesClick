@@ -55,20 +55,6 @@ footer,
 }
 
 /*
-  ERROR BOX
-*/
-.error-box {
-    border-style: solid;
-    border-color: #FF8000;
-    background-color: #FFB266;
-    color: black;
-    font-size: 18px;
-    height: 20%;
-    padding: 1%;
-    width: 50%;
-}
-
-/*
   HEADER STYLE
 */
 
@@ -143,18 +129,20 @@ header nav {
     width: 60%;
 }
 
-
 /*
   ACCOUNT DROPDOWN
 */
+
 .account-dropdown {
     display: inline-block;
     position: relative;
+    right: 2%;
 }
 
 .account-dropdown-content {
     border: gray;
     border-style: dashed;
+    border-radius: 15%;
     background-color: gray;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     display: none;
@@ -170,6 +158,15 @@ header nav {
     list-style-type: none;
 }
 
+.account-dropdown-content hr {
+    position: relative;
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 10px;
+}
+
 .account-dropdown:hover .account-dropdown-content {
     display: block;
 }
@@ -180,6 +177,8 @@ header nav {
     font-weight: bold;
     text-decoration: none;
 }
+
+
 
 /*
   FOOTER STYLE
@@ -254,3 +253,29 @@ footer div a {
     left: 5%;
     top: 25%;
 }
+
+
+/* admin style */
+
+.admin-button1 {
+    position: absolute;
+    left: 40%;
+    top: 20%;
+}
+
+.admin-button2 {
+    position: absolute;
+    right: 40%;
+    top: 20%;
+}
+
+
+/* 404 style */
+
+.error-div {
+    position: absolute;
+    top: 20%;
+    left: 7%;
+}
+
+
