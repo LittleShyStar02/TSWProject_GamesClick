@@ -17,7 +17,7 @@
 			<br>
 			<%@include file="errorbox.jsp" %>
 			<br>
-			<form action="ARegistrazione" method="get" class="form-w1 center">
+			<form action="ARegistrazione" method="post" class="form-w1 center">
 				<label for="nome">Nome</label>
 				<br>
 				<input type="text" id="nome" name="nome" size="32" placeholder="Nome" required>
