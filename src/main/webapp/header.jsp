@@ -27,7 +27,7 @@
 						if(request.getSession().getAttribute("userEmail") != null)
 						{
 							out.print("<li><a href=\"/TSWProject_GamesClick/Account\" class=\"account-dropdown-a\">Account</a></li>");
-							out.print("<li><hr>");
+							out.print("<hr>");
 							out.print("<li><a href=\"/TSWProject_GamesClick/ALogout\" class=\"account-dropdown-a\">Logout</a></li>");
 						}
 						else
