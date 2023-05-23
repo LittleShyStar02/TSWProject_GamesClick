@@ -1,4 +1,4 @@
-package it.project.redirect;
+package it.project.servlet.actions;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -7,15 +7,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class Account
+ * Servlet implementation class Logout
  */
-public class Account extends HttpServlet {
+public class ALogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Account() {
+    public ALogout() {
         super();
     }
 
@@ -23,7 +23,8 @@ public class Account extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getServletContext().getRequestDispatcher("/account.jsp").forward(request, response);;
+		request.getSession().removeAttribute("userEmail");
+		request.getServletContext().getRequestDispatcher("/Home").forward(request, response);
 	}
 
 	/**

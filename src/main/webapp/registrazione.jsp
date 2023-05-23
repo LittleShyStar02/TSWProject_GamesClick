@@ -15,7 +15,9 @@
 		<fieldset class="fieldset-form">
 			<legend>Registrazione</legend>
 			<br>
-			<form class="form-w1 center">
+			<p id="userMessage" style="color: yellow;"></p>
+			<br>
+			<form action="ARegistrazione" method="get" class="form-w1 center">
 				<label for="nome">Nome</label>
 				<br>
 				<input type="text" id="nome" name="nome" size="32" placeholder="Nome" required>
@@ -42,10 +44,8 @@
 				<br>
 				<input type="submit" value="Registrati" size="32">
 				<br>
-				
         		<!-- <div class="form-error"></div> -->
         	</form>
-        	<p id="userMessage"></p>
         </fieldset>
     </div>
  	

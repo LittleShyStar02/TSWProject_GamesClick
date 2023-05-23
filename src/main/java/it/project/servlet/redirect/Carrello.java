@@ -1,4 +1,4 @@
-package it.project.redirect;
+package it.project.servlet.redirect;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,13 +9,13 @@ import java.io.IOException;
 /**
  * Servlet implementation class Account
  */
-public class Home extends HttpServlet {
+public class Carrello extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public Carrello() {
         super();
     }
 
@@ -23,7 +23,7 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);;
+		request.getServletContext().getRequestDispatcher("/carrello.jsp").forward(request, response);;
 	}
 
 	/**

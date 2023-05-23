@@ -4,11 +4,17 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <!--  
+  <error-page>
+  	<error-code>404</error-code>
+    <location>/404.jsp</location>
+  </error-page>
+  -->
   <servlet>
     <description></description>
     <display-name>Account</display-name>
     <servlet-name>Account</servlet-name>
-    <servlet-class>it.project.redirect.Account</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Account</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Account</servlet-name>
@@ -18,7 +24,7 @@
     <description></description>
     <display-name>AdminPanel</display-name>
     <servlet-name>AdminPanel</servlet-name>
-    <servlet-class>it.project.redirect.AdminPanel</servlet-class>
+    <servlet-class>it.project.servlet.redirect.AdminPanel</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminPanel</servlet-name>
@@ -28,7 +34,7 @@
     <description></description>
     <display-name>Assistenza</display-name>
     <servlet-name>Assistenza</servlet-name>
-    <servlet-class>it.project.redirect.Assistenza</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Assistenza</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Assistenza</servlet-name>
@@ -38,7 +44,7 @@
     <description></description>
     <display-name>Carrello</display-name>
     <servlet-name>Carrello</servlet-name>
-    <servlet-class>it.project.redirect.Carrello</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Carrello</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Carrello</servlet-name>
@@ -48,7 +54,7 @@
     <description></description>
     <display-name>Home</display-name>
     <servlet-name>Home</servlet-name>
-    <servlet-class>it.project.redirect.Home</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Home</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
@@ -58,7 +64,7 @@
     <description></description>
     <display-name>Login</display-name>
     <servlet-name>Login</servlet-name>
-    <servlet-class>it.project.redirect.Login</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Login</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -68,7 +74,7 @@
     <description></description>
     <display-name>Negozio</display-name>
     <servlet-name>Negozio</servlet-name>
-    <servlet-class>it.project.redirect.Negozio</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Negozio</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Negozio</servlet-name>
@@ -78,7 +84,7 @@
     <description></description>
     <display-name>Registrazione</display-name>
     <servlet-name>Registrazione</servlet-name>
-    <servlet-class>it.project.redirect.Registrazione</servlet-class>
+    <servlet-class>it.project.servlet.redirect.Registrazione</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Registrazione</servlet-name>
@@ -88,7 +94,7 @@
     <description></description>
     <display-name>ALogout</display-name>
     <servlet-name>ALogout</servlet-name>
-    <servlet-class>it.project.actions.ALogout</servlet-class>
+    <servlet-class>it.project.servlet.actions.ALogout</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ALogout</servlet-name>
@@ -98,7 +104,7 @@
     <description></description>
     <display-name>ALogin</display-name>
     <servlet-name>ALogin</servlet-name>
-    <servlet-class>it.project.actions.ALogin</servlet-class>
+    <servlet-class>it.project.servlet.actions.ALogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ALogin</servlet-name>

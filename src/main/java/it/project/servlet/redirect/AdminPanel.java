@@ -1,4 +1,4 @@
-package it.project.redirect;
+package it.project.servlet.redirect;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,13 +9,13 @@ import java.io.IOException;
 /**
  * Servlet implementation class Account
  */
-public class Assistenza extends HttpServlet {
+public class AdminPanel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Assistenza() {
+    public AdminPanel() {
         super();
     }
 
@@ -23,7 +23,7 @@ public class Assistenza extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getServletContext().getRequestDispatcher("/assistenza.jsp").forward(request, response);;
+		request.getServletContext().getRequestDispatcher("/admin.jsp");
 	}
 
 	/**

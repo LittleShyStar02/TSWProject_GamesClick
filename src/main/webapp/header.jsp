@@ -3,21 +3,21 @@
 <header>
 	<nav>
 		<div class="header-logo">
-			<a href="TSWProject_GamesClick/Homepage" class="header-logo-text">GamesClick</a>
+			<a href="index.jsp" class="header-logo-text">GamesClick</a>
 		</div>
 		<ul class="header-ul">
 			<li>
-				<a href="TSWProject_GamesClick/Negozio">Negozio</a>
+				<a href="negozio.jsp">Negozio</a>
 			</li>
 			<li>
-				<a href="TSWProject_GamesClick/Assistenza">Assistenza</a>
+				<a href="assistenza.jsp">Assistenza</a>
 			</li>
 			<li>
 				<a href="#">Informazioni</a>
 			</li>
 		</ul>
 		<div class="header-icon">
-			<a href="TSWProject_GamesClick/Carrello" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image"></a>
+			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image"></a>
 		</div>
 		<div class="account-dropdown header-icon">
 			<a href="#" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image"></a>

@@ -12,29 +12,33 @@
  	<%@include file="header.jsp" %>  
  	
  	<div class="first-container center">
+ 		<%
+ 			if(request.getSession().getAttribute("userMessage") != null)
+ 			{
+ 				out.print("<div><p id=\"userMessage\">" + request.getSession().getAttribute("userMessage") + "</p></div>");
+ 				request.getSession().removeAttribute("userMessage");
+ 			}
+ 		%>
 		<fieldset class="fieldset-form">
 			<legend>Login</legend>
 			<br>
-			<form class="form-w1 center">
+			<form action="ALogin" method="post" class="form-w1 center">
 				<label for="email">Email</label>
 				<br>
-				<input type="email" id="email" name="email" size="64" placeholder="Email">
+				<input type="email" id="email" name="email" size="64" placeholder="Email" required>
 				<br>
 				<label for="password">Password</label>
 				<br>
-				<input type="password" id="password" name="password" size="64" placeholder="Password">
+				<input type="password" id="password" name="password" size="64" placeholder="Password" required>
 				<br>
 				<input type="submit" value="Accedi">
 				<br>
 				<!-- <div class="form-error"></div> -->
 			</form>
 			<div>
-				<a href="#" class="form-a">Non hai ancora un account? Registrati</a>
+				<a href="registrazione.jsp" class="form-a">Non hai ancora un account? Registrati</a>
 			</div>
 			<br>
-			<div>
-				<p id="userMessage"></p>
-			</div>
 			<br>
 		</fieldset>
 	</div>
