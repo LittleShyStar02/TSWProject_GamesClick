@@ -5,7 +5,7 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <error-page>
-  	<error-code>404</error-code>
+    <error-code>404</error-code>
     <location>/404.jsp</location>
   </error-page>
   <servlet>
@@ -107,5 +107,15 @@
   <servlet-mapping>
     <servlet-name>ALogin</servlet-name>
     <url-pattern>/ALogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ARegistrazione</display-name>
+    <servlet-name>ARegistrazione</servlet-name>
+    <servlet-class>it.project.servlet.actions.ARegistrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ARegistrazione</servlet-name>
+    <url-pattern>/ARegistrazione</url-pattern>
   </servlet-mapping>
 </web-app>

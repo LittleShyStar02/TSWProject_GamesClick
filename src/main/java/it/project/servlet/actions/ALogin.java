@@ -45,7 +45,9 @@ public class ALogin extends HttpServlet {
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet set = ps.executeQuery();
-			if(set.getRow()==1)
+			int row = 0;
+			while(set.next()) row++;
+			if(row==1)
 			{
 				page = "/Home";
 				message = "Autenticato correttamente";

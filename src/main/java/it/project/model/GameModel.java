@@ -111,11 +111,12 @@ public class GameModel implements EntityBeanModel<GameBean>
 	}
 
 	@Override
-	public synchronized void doSave(GameBean entity) throws SQLException 
+	public synchronized boolean doSave(GameBean entity) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
-
+		boolean ok = false;
+		
 		try {
 			
 			conn = ConnectionPool.getConnection();
@@ -129,7 +130,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 			ps.setInt(7, entity.getAdminKey());
 			ps.executeUpdate();
 			conn.commit();
-			
+			ok = true;
 		} finally {
 			try {
 				if (ps != null)
@@ -138,6 +139,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 				ConnectionPool.releaseConnection(conn);
 			}
 		}
+		return ok;
 		
 	}
 

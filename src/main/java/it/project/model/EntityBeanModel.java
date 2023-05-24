@@ -9,6 +9,6 @@ public interface EntityBeanModel<Type>
 	public boolean doDelete(Type entity) throws SQLException;
 	public Type doRetrieveByKey(String key) throws SQLException;
 	public Collection<Type> doRetrieveAll(String order) throws SQLException;
-	public void doSave(Type entity) throws SQLException;
+	public boolean doSave(Type entity) throws SQLException;
 
 }
