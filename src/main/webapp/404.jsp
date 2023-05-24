@@ -13,7 +13,7 @@
  	
  	<div class="first-container">
  		
- 		<div class="error-div">
+ 		<div class="center">
  			<h1 style="font-size: 58px;color:red;">Error 404</h1>
  			<h3 style="font-size: 28px;color:pink;">Pagina non trovata</h3>
  			<br>

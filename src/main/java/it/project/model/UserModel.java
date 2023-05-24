@@ -127,15 +127,15 @@ public class UserModel implements EntityBeanModel<UserBean>
 	}
 
 	@Override
-	public synchronized void doSave(UserBean entity) throws SQLException 
+	public synchronized boolean doSave(UserBean entity) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
-
+		boolean ok = false;
 		try {
 			
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("INSERT INTO Gioco(Nome, Cognome, Email, Password, DataNascita, Indirizzo) VALUES (?, ?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("INSERT INTO Utente(Nome, Cognome, Email, Password, DataNascita, Indirizzo) VALUES (?, ?, ?, ?, ?, ?)");
 			ps.setString(1, entity.getName());
 			ps.setString(2, entity.getSurname());
 			ps.setString(3, entity.getEmail());
@@ -144,7 +144,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 			ps.setString(6, entity.getAddress());
 			ps.executeUpdate();
 			conn.commit();
-			
+			ok = true;
 		} finally {
 			try {
 				if (ps != null)
@@ -153,7 +153,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 				ConnectionPool.releaseConnection(conn);
 			}
 		}
-		
+		return ok;
 	}
 
 }

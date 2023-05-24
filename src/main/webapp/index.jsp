@@ -11,7 +11,11 @@
 <body>
  	<%@include file="header.jsp" %>
  	
- 	<div class="first-container"></div>
+ 	<div class="first-container center">
+ 		
+ 		<%@include file="errorbox.jsp" %>
+ 		
+ 	</div>
  	
  	<%@include file="footer.jsp" %>
 </body>

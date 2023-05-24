@@ -22,7 +22,7 @@
 		<fieldset class="fieldset-form">
 		<legend style="font-size: 28px;">Contattaci! Ti riponderemo al più presto!</legend>
 		<br>
-      		<form name="formAssistenza" method="GET" onsubmit="doAlert()" class="form-w1 center">
+      		<form name="formAssistenza" method="post" onsubmit="doAlert()" class="form-w1 center">
 				<label for="email">Email</label>
 				<br>
 				<input type="text" name="email" size="64" placeholder="Email" required>

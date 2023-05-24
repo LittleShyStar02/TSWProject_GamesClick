@@ -34,13 +34,17 @@
 				<br>
 				<input type="password" id="password" name="password" size="64" placeholder="Password" required>
 				<br>
-				<label for="conferma_password">Conferma password:</label>
+				<label for="password2">Conferma password:</label>
 				<br>
-				<input type="password" id="conferma_password" name="conferma_password" size="64" placeholder="Conferma Password" required>
+				<input type="password" id="password2" name="password2" size="64" placeholder="Conferma Password" required>
 				<br>
-				<label for="data_di_nascita">Data di nascita:</label>
+				<label for="data">Data di nascita:</label>
 				<br>
-				<input type="date" id="data_di_nascita" name="data_di_nascita" required>
+				<input type="date" id="data" name="data" required>
+				<br>
+				<label for="indirizzo">Indirizzo:</label>
+				<br>
+				<input type="text" id="indirizzo" name="indirizzo" size="64" placeholder="Indirizzo, Civico" required>
 				<br>
 				<input type="submit" value="Registrati" size="32">
 				<br>
