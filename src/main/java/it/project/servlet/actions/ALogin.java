@@ -5,12 +5,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import it.project.storage.ConnectionPool;
+import it.project.bean.UserBean;
+import it.project.model.UserModel;
 
 /**
  * Servlet implementation class ALogin
@@ -30,8 +28,6 @@ public class ALogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		Connection conn = null;
-		PreparedStatement ps = null;
 		
 		String page = null;
 		String message = null;
@@ -40,26 +36,34 @@ public class ALogin extends HttpServlet {
 		
 		try 
 		{
-			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Utente WHERE Email = ? AND Password = ?");
-			ps.setString(1, email);
-			ps.setString(2, password);
-			ResultSet set = ps.executeQuery();
-			int row = 0;
-			while(set.next()) row++;
-			if(row==1)
+			
+			if(request.getSession().getAttribute("userEmail") == null)
 			{
-				page = "/Home";
-				message = "Autenticato correttamente";
+				UserBean user = new UserModel().doRetrieveByKey(email);
+				if(user.getEmail() != null)
+				{
+					if(user.getPassword().equals(password))
+					{
+						page = "/Home";
+						message = "Autenticato correttamente";
+					}
+					else
+					{
+						page = "/Login";
+						message = "Password errata";
+					}
+				}
+				else
+				{
+					page = "/Login";
+					message = "Non è stato trovato nessun account con queste credenziali";
+				}
 			}
 			else
 			{
 				page = "/Login";
-				message = "Non è stato trovato nessun account con queste credenziali";
+				message = "Sei già autenticato";
 			}
-			
-			if(ps != null) ps.close();
-			ConnectionPool.releaseConnection(conn);
 		}
 		catch (SQLException e) 
 		{

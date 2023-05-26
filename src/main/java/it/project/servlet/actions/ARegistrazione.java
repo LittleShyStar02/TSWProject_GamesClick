@@ -35,34 +35,50 @@ public class ARegistrazione extends HttpServlet {
 		UserBean bean = new UserBean();
 		bean.setAdmin(false);
 		
+		
 		String page = null;
 		String message = null;
 		String password2 = null;
 		
 		try 
 		{
-			bean.setName(request.getParameter("nome"));
-			bean.setSurname(request.getParameter("cognome"));
-			bean.setEmail(request.getParameter("email"));
-			bean.setPassword(request.getParameter("password"));
-			password2 = request.getParameter("password2");
-			if(!bean.getPassword().equals(password2)) throw new PasswordException();
-			bean.setBornDate(new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")));
-			bean.setAddress(request.getParameter("indirizzo"));
-			if(model.doSave(bean))
+			UserBean check = new UserModel().doRetrieveByKey(request.getParameter("email"));
+			if(request.getSession().getAttribute("userEmail") != null)
 			{
-				page = "/Login";
-				message = "Registrazione avventa con successo! Benvenuto/a su GamesClick! Ora effettua il login!";
+				page = "/Registrazione";
+				message = "Sei già autenticato";
+			}
+			else if(check.getEmail() != null)
+			{
+				page = "/Registrazione";
+				message = "Questa email è già utilizzata";
 			}
 			else
 			{
-				page = "/Registrazione";
-				message = "Errore durante la registrazione, contatta un amministratore";
+				bean.setName(request.getParameter("nome"));
+				bean.setSurname(request.getParameter("cognome"));
+				bean.setEmail(request.getParameter("email"));
+				bean.setPassword(request.getParameter("password"));
+				password2 = request.getParameter("password2");
+				if(!bean.getPassword().equals(password2)) throw new PasswordException();
+				bean.setBornDate(new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")));
+				bean.setAddress(request.getParameter("indirizzo"));
+				if(model.doSave(bean))
+				{
+					page = "/Login";
+					message = "Registrazione avventa con successo! Benvenuto/a su GamesClick! Ora effettua il login!";
+				}
+				else
+				{
+					page = "/Registrazione";
+					message = "Errore durante la registrazione, contatta un amministratore";
+				}
 			}
+			
 		}
 		catch (SQLException | ParseException | PasswordException e)
 		{
-			page = "/Login";
+			page = "/Registrazione";
 			message = e.getMessage();
 		}
 		finally

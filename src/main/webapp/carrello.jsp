@@ -11,7 +11,13 @@
 <body>
  	<%@include file="header.jsp" %>  
  	
- 	<div class="first-container"></div>
+ 	<div class="first-container center">
+ 	
+ 		<%
+ 			
+ 		%>
+ 		
+ 	</div>
  	
  	<%@include file="footer.jsp" %>
 </body>

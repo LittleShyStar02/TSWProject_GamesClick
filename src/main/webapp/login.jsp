@@ -21,15 +21,14 @@
 			<form action="ALogin" method="post" class="form-w1 center">
 				<label for="email">Email</label>
 				<br>
-				<input type="email" id="email" name="email" size="64" placeholder="Email" required>
+				<input type="email" id="email" name="email" size="64" placeholder="Email" required autofocus>
 				<br>
 				<label for="password">Password</label>
 				<br>
-				<input type="password" id="password" name="password" size="64" placeholder="Password" required>
+				<input type="password" id="password" name="password" size="64" placeholder="Password" required autofocus>
 				<br>
 				<input type="submit" value="Accedi">
 				<br>
-				<!-- <div class="form-error"></div> -->
 			</form>
 			<div>
 				<a href="registrazione.jsp" class="form-a">Non hai ancora un account? Registrati</a>

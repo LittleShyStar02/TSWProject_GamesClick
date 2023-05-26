@@ -42,7 +42,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 	}
 
 	@Override
-	public synchronized UserBean doRetrieveByKey(String key) throws SQLException 
+	public synchronized UserBean doRetrieveByKey(String email) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null, ps2= null;
@@ -51,7 +51,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 		try {
 			conn = ConnectionPool.getConnection();
 			ps = conn.prepareStatement("SELECT * FROM Utente WHERE Email = ?");
-			ps.setString(1, key);
+			ps.setString(1, email);
 
 			ResultSet set = ps.executeQuery();
 
@@ -67,8 +67,10 @@ public class UserModel implements EntityBeanModel<UserBean>
 				ps2 = conn.prepareStatement("SELECT * FROM Amministratore WHERE Email = ?");
 				ps2.setString(1,user.getEmail());
 				ResultSet set2 = ps2.executeQuery();
-				set2.last();
-				user.setAdmin(set2.getRow() != 0);
+				while(set2.next())
+				{
+					user.setAdmin(set2.getRow() != 0);
+				}
 				ps2.close();
 			}
 
@@ -110,8 +112,10 @@ public class UserModel implements EntityBeanModel<UserBean>
 				ps2 = conn.prepareStatement("SELECT * FROM Amministratore WHERE Email = ?");
 				ps2.setString(1,user.getEmail());
 				ResultSet set2 = ps2.executeQuery();
-				set2.last();
-				user.setAdmin(set2.getRow() != 0);
+				while(set2.next())
+				{
+					user.setAdmin(set2.getRow() != 0);
+				}
 				ps2.close();
 			}
 			
@@ -154,6 +158,37 @@ public class UserModel implements EntityBeanModel<UserBean>
 			}
 		}
 		return ok;
+	}
+
+	@Override
+	public int doRetrieveKey(String email) throws SQLException {
+		int key = -1;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM Utente WHERE Email = ?");
+			ps.setString(1, email);
+
+			ResultSet set = ps.executeQuery();
+
+			while (set.next()) 
+			{
+				key = set.getInt("IDUtente");
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		
+		return key;
 	}
 
 }

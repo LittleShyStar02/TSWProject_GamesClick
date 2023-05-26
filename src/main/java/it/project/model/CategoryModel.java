@@ -7,25 +7,23 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import it.project.bean.GameBean;
+import it.project.bean.CategoryBean;
 import it.project.storage.ConnectionPool;
 
-public class GameModel implements EntityBeanModel<GameBean>
+public class CategoryModel implements EntityBeanModel<CategoryBean>
 {
 
 	@Override
-	public synchronized boolean doDelete(GameBean entity) throws SQLException 
+	public synchronized boolean doDelete(CategoryBean entity) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		int result = 0;
 
-		EsecuzioneGiocoModel.doDeleteByGame(entity);
-		
 		try {
 			
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("DELETE FROM Gioco WHERE Nome = ?");
+			ps = conn.prepareStatement("DELETE FROM Categoria WHERE Nome = ?");
 			ps.setString(1, entity.getName());
 			result = ps.executeUpdate();
 
@@ -41,28 +39,23 @@ public class GameModel implements EntityBeanModel<GameBean>
 	}
 
 	@Override
-	public synchronized GameBean doRetrieveByKey(String name) throws SQLException 
+	public synchronized CategoryBean doRetrieveByKey(String name) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
-		GameBean game = new GameBean();
+		CategoryBean cat = new CategoryBean();
 
 		try {
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Gioco WHERE Nome = ?");
+			ps = conn.prepareStatement("SELECT * FROM Categoria WHERE Nome = ?");
 			ps.setString(1, name);
 
 			ResultSet set = ps.executeQuery();
 
 			while (set.next()) 
 			{
-				game.setName(set.getString("Nome"));
-				game.setDescription(set.getString("Descrizione"));
-				game.setPrice(set.getDouble("Prezzo"));
-				game.setReleaseDate(set.getDate("DataRilascio"));
-				game.setMinAge(set.getInt("EtaMinima"));
-				game.setPreview(set.getString("PreviewUrl"));
-				game.setAdminKey(set.getInt("IDAdmin"));
+				cat.setName(set.getString("Nome"));
+				cat.setDescription(set.getString("Descrizione"));
 			}
 
 		} finally {
@@ -73,33 +66,28 @@ public class GameModel implements EntityBeanModel<GameBean>
 				ConnectionPool.releaseConnection(conn);
 			}
 		}
-		return game;
+		return cat;
 	}
 
 	@Override
-	public synchronized Collection<GameBean> doRetrieveAll(String order) throws SQLException 
+	public synchronized Collection<CategoryBean> doRetrieveAll(String order) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
-		Collection<GameBean> games;
+		Collection<CategoryBean> cats;
 		try
 		{
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Gioco ORDER BY " + order);
-			games = new LinkedList<GameBean>();
+			ps = conn.prepareStatement("SELECT * FROM Categoria ORDER BY " + order);
+			cats = new LinkedList<CategoryBean>();
 			ResultSet set = ps.executeQuery();
-			GameBean game;
+			CategoryBean cat;
 			while(set.next())
 			{
-				game = new GameBean();
-				game.setName(set.getString("Nome"));
-				game.setDescription(set.getString("Descrizione"));
-				game.setPrice(set.getDouble("Prezzo"));
-				game.setReleaseDate(set.getDate("DataRilascio"));
-				game.setMinAge(set.getInt("EtaMinima"));
-				game.setPreview(set.getString("PreviewUrl"));
-				game.setAdminKey(set.getInt("IDAdmin"));
-				games.add(game);
+				cat = new CategoryBean();
+				cat.setName(set.getString("Nome"));
+				cat.setDescription(set.getString("Descrizione"));
+				cats.add(cat);
 			}
 		} finally {
 			try {
@@ -109,11 +97,11 @@ public class GameModel implements EntityBeanModel<GameBean>
 				ConnectionPool.releaseConnection(conn);
 			}
 		}
-		return games;
+		return cats;
 	}
 
 	@Override
-	public synchronized boolean doSave(GameBean entity) throws SQLException 
+	public synchronized boolean doSave(CategoryBean entity) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -122,14 +110,9 @@ public class GameModel implements EntityBeanModel<GameBean>
 		try {
 			
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("INSERT INTO Gioco(Nome, Descrizione, Prezzo, DataRilascio, EtaMinima, PreviewUrl, IDAdmin) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("INSERT INTO Categoria(Nome, Descrizione) VALUES (?, ?)");
 			ps.setString(1, entity.getName());
 			ps.setString(2, entity.getDescription());
-			ps.setDouble(3, entity.getPrice());
-			ps.setDate(4, new java.sql.Date(entity.getReleaseDate().getTime()));
-			ps.setInt(5, entity.getMinAge());
-			ps.setString(6, entity.getPreview());
-			ps.setInt(7, entity.getAdminKey());
 			ps.executeUpdate();
 			conn.commit();
 			ok = true;
@@ -154,14 +137,14 @@ public class GameModel implements EntityBeanModel<GameBean>
 
 		try {
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Gioco WHERE Nome = ?");
+			ps = conn.prepareStatement("SELECT * FROM Categoria WHERE Nome = ?");
 			ps.setString(1, name);
 
 			ResultSet set = ps.executeQuery();
 
 			while (set.next()) 
 			{
-				key = set.getInt("IDGioco");
+				key = set.getInt("IDConsole");
 			}
 
 		} finally {
