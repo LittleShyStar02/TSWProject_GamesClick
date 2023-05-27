@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import it.project.bean.UserBean;
+import it.project.exception.AdminExists;
+import it.project.exception.AdminNotExists;
 import it.project.storage.ConnectionPool;
 
 public class UserModel implements EntityBeanModel<UserBean>
@@ -34,6 +36,30 @@ public class UserModel implements EntityBeanModel<UserBean>
 			try {
 				if(ps != null) ps.close();
 				if(ps2 != null) ps2.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return (result != 0);
+	}
+	
+	public synchronized boolean doDeleteAdmin(UserBean entity) throws SQLException, AdminNotExists 
+	{
+		if(!entity.isAdmin()) throw new AdminNotExists(); 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		
+		try {
+			
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("DELETE FROM Amministratore WHERE Email = ?");
+			ps.setString(1, entity.getEmail());
+			result = ps.executeUpdate();
+
+		} finally {
+			try {
+				if(ps != null) ps.close();
 			} finally {
 				ConnectionPool.releaseConnection(conn);
 			}
@@ -146,6 +172,30 @@ public class UserModel implements EntityBeanModel<UserBean>
 			ps.setString(4, entity.getPassword());
 			ps.setDate(5, new java.sql.Date(entity.getBornDate().getTime()));
 			ps.setString(6, entity.getAddress());
+			ps.executeUpdate();
+			conn.commit();
+			ok = true;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return ok;
+	}
+	
+	public synchronized boolean doSaveAdmin(UserBean entity) throws SQLException, AdminExists 
+	{
+		if(entity.isAdmin()) throw new AdminExists();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		boolean ok = false;
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("INSERT INTO Amministratore(Email) VALUES (?)");
+			ps.setString(1, entity.getEmail());
 			ps.executeUpdate();
 			conn.commit();
 			ok = true;

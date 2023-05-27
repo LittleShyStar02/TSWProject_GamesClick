@@ -118,4 +118,14 @@
     <servlet-name>ARegistrazione</servlet-name>
     <url-pattern>/ARegistrazione</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminManager</display-name>
+    <servlet-name>AdminManager</servlet-name>
+    <servlet-class>it.project.servlet.actions.AdminManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminManager</servlet-name>
+    <url-pattern>/AdminManager</url-pattern>
+  </servlet-mapping>
 </web-app>

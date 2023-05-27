@@ -13,31 +13,10 @@
 
         .showcont {
           color: white;
-          display: inline;
+          display: contents;
         }
 	</style>
-    <script>
-    	function toggle(firstToShow, secondToShow)
-    	{
-    		document.getElementById('actioncat').classList.remove('showcont');
-        document.getElementById('actioncat').classList.add('hidecont');
-
-        document.getElementById('actioncon').classList.remove('showcont');
-        document.getElementById('actioncon').classList.add('hidecont');
-
-        document.getElementById('actiongame').classList.remove('showcont');
-        document.getElementById('actiongame').classList.add('hidecont');
-
-        document.getElementById('actionadmin').classList.remove('showcont');
-        document.getElementById('actionadmin').classList.add('hidecont');
-
-        document.getElementById(firstToShow).classList.add('showcont');
-        if(secondToShow != null)
-        {
-          document.getElementById(secondToShow).classList.add('showcont');
-        }
-    	}
-    </script>
+    <script src="assets/js/admin.js"></script>
   </head>
 
   <body>
@@ -74,9 +53,11 @@
   	
     <%@include file="header.jsp" %>
 
-      <div class="first-container">
+      <div class="first-container center" style="justify-content: unset;">
 
-        <fieldset class="fieldset-form">
+		<%@include file="errorbox.jsp" %>
+		<br><br>
+        <fieldset class="fieldset-form" style="right: 3%;width: 90%;border: none;padding: 2%">
           <legend style="font-size: 20px;color: pink;">Cosa vuoi aggiornare?</legend>
           <form action="" method="post">
             <ul class="admin-ul">
@@ -87,10 +68,18 @@
             </ul>
           </form>
         </fieldset>
-
+        <br><br>
 
         <div id="actioncat" class="hidecont">
-          Azione Categoria
+          <br>
+          <fieldset class="fieldset-form" style="padding: 2%;border: none">
+          	<legend style="font-size: 20px;color: pink;">Gestione amministratori</legend>
+          	<form action="AdminManager" method="post" id="adminForm" class="adminManager">
+          		<input type="text" id="categoryName" name="categoryName" onkeypress="categoryAutoComplete()">
+          		<div class="showList">
+          		</div>
+          	</form>
+          </fieldset>
         </div>
         
         <div id="actioncon" class="hidecont">
@@ -101,10 +90,21 @@
           Azione Gioco
         </div>
         
-        <div id="actionadmin" class="hidecont">
-          Azione Amministratore
+        <div id="actionadmin" class="fieldset-form hidecont">
+          <br>
+          <fieldset class="fieldset-form" style="padding: 2%;border: none">
+          	<legend style="font-size: 20px;color: pink;">Gestione amministratori</legend>
+          	<form action="AdminManager" method="post" id="adminForm" class="adminManager">
+          		<input type="text" id="adminAction" name="adminAction" style="display: none;">
+          		<label for="adminEmail">Inserisci l'email dell'amministratore</label>
+          		<br>
+          		<input type="email" id="adminEmail" name="adminEmail" size=32 placeholder="Email" required>
+          		<br><br>
+          		<input type="button" value="Rendi amministratore" onclick="setAction('adminAction','adminForm','add')">
+          		<input type="button" value="Rendi utente" onclick="setAction('adminAction','adminForm','remove')">
+          	</form>
+          </fieldset>
         </div>
-
       </div>
       
       <%@include file="footer.jsp" %>
