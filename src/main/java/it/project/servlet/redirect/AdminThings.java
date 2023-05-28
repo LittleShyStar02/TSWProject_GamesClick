@@ -10,13 +10,13 @@ import java.util.Iterator;
 /**
  * Servlet implementation class Account
  */
-public class AdminPanel extends HttpServlet {
+public class AdminThings extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminPanel() {
+    public AdminThings() {
         super();
     }
 
@@ -24,7 +24,7 @@ public class AdminPanel extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String first=null,second=null,type=null;
+		String first=null,second=null,type=null;
 		
 		Iterator<String> it = request.getParameterNames().asIterator();
 		while(it.hasNext())

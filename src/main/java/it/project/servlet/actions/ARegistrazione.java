@@ -5,12 +5,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import it.project.bean.UserBean;
-import it.project.exception.PasswordException;
 import it.project.model.UserModel;
 
 /**
@@ -38,7 +35,6 @@ public class ARegistrazione extends HttpServlet {
 		
 		String page = null;
 		String message = null;
-		String password2 = null;
 		
 		try 
 		{
@@ -59,9 +55,7 @@ public class ARegistrazione extends HttpServlet {
 				bean.setSurname(request.getParameter("cognome"));
 				bean.setEmail(request.getParameter("email"));
 				bean.setPassword(request.getParameter("password"));
-				password2 = request.getParameter("password2");
-				if(!bean.getPassword().equals(password2)) throw new PasswordException();
-				bean.setBornDate(new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")));
+				bean.setBornDate(Date.valueOf(request.getParameter("data")));
 				bean.setAddress(request.getParameter("indirizzo"));
 				if(model.doSave(bean))
 				{
@@ -76,7 +70,7 @@ public class ARegistrazione extends HttpServlet {
 			}
 			
 		}
-		catch (SQLException | ParseException | PasswordException e)
+		catch (SQLException e)
 		{
 			page = "/Registrazione";
 			message = e.getMessage();

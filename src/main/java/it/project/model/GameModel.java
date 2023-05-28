@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import it.project.Utility;
 import it.project.bean.GameBean;
 import it.project.storage.ConnectionPool;
 
@@ -126,7 +127,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 			ps.setString(1, entity.getName());
 			ps.setString(2, entity.getDescription());
 			ps.setDouble(3, entity.getPrice());
-			ps.setDate(4, new java.sql.Date(entity.getReleaseDate().getTime()));
+			ps.setString(4, Utility.dateToMysql(entity.getReleaseDate()));
 			ps.setInt(5, entity.getMinAge());
 			ps.setString(6, entity.getPreview());
 			ps.setInt(7, entity.getAdminKey());

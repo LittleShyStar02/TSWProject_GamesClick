@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import it.project.Utility;
 import it.project.bean.UserBean;
 import it.project.exception.AdminExists;
 import it.project.exception.AdminNotExists;
@@ -170,7 +171,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 			ps.setString(2, entity.getSurname());
 			ps.setString(3, entity.getEmail());
 			ps.setString(4, entity.getPassword());
-			ps.setDate(5, new java.sql.Date(entity.getBornDate().getTime()));
+			ps.setString(5, Utility.dateToMysql(entity.getBornDate()));
 			ps.setString(6, entity.getAddress());
 			ps.executeUpdate();
 			conn.commit();

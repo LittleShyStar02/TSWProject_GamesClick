@@ -6,6 +6,7 @@
 
 <head>
 	<%@include file="head.jsp" %>
+	<script src="assets/js/validator.js"></script>
 </head>
 
 <body>
@@ -18,14 +19,16 @@
 		<fieldset class="fieldset-form">
 			<legend>Registrazione</legend>
 			<br>
-			<form action="ARegistrazione" method="post" class="form-w1 center">
+			<form action="ARegistrazione" method="post" class="form-w1 center" onsubmit="return validateReg()">
 				<label for="nome">Nome</label>
 				<br>
 				<input type="text" id="nome" name="nome" size="32" placeholder="Nome" required autofocus>
+				<p id="errorname" style="color:red"></p>
 				<br>
 				<label for="cognome">Cognome</label>
 				<br>
 				<input type="text" id="cognome" name="cognome" size="32" placeholder="Cognome" required autofocus>
+				<p id="errorsurname" style="color:red"></p>
 				<br>
 				<label for="email">Email</label>
 				<br>
@@ -38,6 +41,7 @@
 				<label for="password2">Conferma password:</label>
 				<br>
 				<input type="password" id="password2" name="password2" size="64" placeholder="Conferma Password" required autofocus>
+				<p id="password2error" style="color:red"></p>
 				<br>
 				<label for="data">Data di nascita:</label>
 				<br>
