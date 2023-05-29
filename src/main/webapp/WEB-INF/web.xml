@@ -128,14 +128,4 @@
     <servlet-name>AdminManager</servlet-name>
     <url-pattern>/AdminManager</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AdminThings</display-name>
-    <servlet-name>AdminThings</servlet-name>
-    <servlet-class>it.project.servlet.redirect.AdminThings</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminThings</servlet-name>
-    <url-pattern>/AdminThings</url-pattern>
-  </servlet-mapping>
 </web-app>

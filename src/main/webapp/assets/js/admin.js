@@ -33,6 +33,12 @@ function setInputDataType(dataType)
     document.getElementById('input_datatype').value = dataType;
 }
 
+function setDataSearch(text)
+{
+    if(text == 'null' || text == null) return;
+    document.getElementById('search_datatype').value = text;
+}
+
 function setTypeText(id,text)
 {
     document.getElementById(id).innerHTML = text;
@@ -62,6 +68,11 @@ function setParameter(form,first,second,type)
 function setPlaceholder(id,text)
 {
     document.getElementById(id).placeholder = text;
+}
+
+function setReadOnly(id)
+{
+    document.getElementById(id).readOnly = true;
 }
 
 function show(idtoshow)
@@ -114,6 +125,7 @@ function visualize(firstToShow,secondToShow,dataType)
     if(secondToShow != '' && firstToShow != null)
     {
         show(secondToShow);
+        setReadOnly('search_datatype');
     }
 
 }

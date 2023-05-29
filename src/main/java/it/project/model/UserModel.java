@@ -242,4 +242,9 @@ public class UserModel implements EntityBeanModel<UserBean>
 		return key;
 	}
 
+	@Override
+	public boolean doUpdate(UserBean entity) throws SQLException {
+		return false;
+	}
+
 }

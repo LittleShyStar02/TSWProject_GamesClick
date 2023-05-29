@@ -20,8 +20,12 @@
   </head>
 
   <%
-  	String onload = "visualize({first},{second},{type})";
-  	if(request.getParameter("first") != null) onload = onload.replace("{first}","'"+request.getParameter("first")+"'");
+  	String datasearch = request.getParameter("datasearch");
+  	String onload = "visualize({first},{second},{type});setDataSearch('" + datasearch + "');";
+  	if(request.getParameter("first") != null) 
+  	{
+  		onload = onload.replace("{first}","'"+request.getParameter("first")+"'");
+  	}
   	else onload = onload.replace("{first}","''");
   	
   	if(request.getParameter("second") != null) onload = onload.replace("{second}","'"+request.getParameter("second")+"'");
@@ -97,16 +101,65 @@
           		<input type="text" id="secondToShow2" name="secondToShow" style="display: none;">
           		<input type="text" id="dataType2" name="dataType" style="display: none;">
           		<input type="text" id="input_datatype" name="input_datatype" style="display: none;">
+          		<input type="text" id="action_form" name="action_form" style="display: none;">
           		<label for="search_datatype" id="label_datatype"></label>
           		<br>
           		<input type="text" id="search_datatype" name="search_datatype" size=32 required>
           		<input type="submit" value="Trova" class="admin-binput">
           		<div id="catinfo" class="hidecont">
-        			Categoria
+          			<%@page import="it.project.bean.CategoryBean,it.project.model.CategoryModel" %>
+        			<%
+        				
+          				if(datasearch == null) out.print("<p>Errore durante la comunicazione con il server</p>");
+          				else
+          				{
+          					CategoryBean catbean = new CategoryModel().doRetrieveByKey(datasearch);
+          					if(catbean.getName() == null) 
+          					{
+          						out.print("<p>Categoria inesistente. Creala</p>");
+          						out.print("<textarea id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\" required></textarea>");
+          						out.print("<br>");
+          						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createCategory()\">");
+          					}
+          					else
+          					{
+          						out.print("<br>");
+          						out.print("<textarea type=\"text\" id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" value=\"" + catbean.getDescription() + "\" readonly required></textarea>");
+          						out.print("<br>");
+          						out.print("<input type=\"submit\" value=\"Modifica\" class\"admin-binput binputw\" onclick=\"unlockCategory()\">");
+          						out.print("<input type=\"submit\" value=\"Salva\" class=\"admib-binput binputw\" onclick=\"modifyCategory()\">");
+          						out.print("<input type=\"submit\" value=\"Elimina\" class=\"admib-binput binputw\" onclick=\"deleteCategory()\">");
+          					}
+          				}
+        			%>
         		</div>
         
-        		<div id="coninfo" class="hidecont">
-        			Console
+        			<div id="coninfo" class="hidecont">
+          			<%@page import="it.project.bean.ConsoleBean,it.project.model.ConsoleModel" %>
+        			<%
+        				
+          				if(datasearch == null) out.print("<p>Errore durante la comunicazione con il server</p>");
+          				else
+          				{
+          					ConsoleBean conbean = new ConsoleModel().doRetrieveByKey(datasearch);
+          					if(conbean.getName() == null) 
+          					{
+          						out.print("<p>Console inesistente. Creala</p>");
+          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\" required></textarea>");
+          						out.print("<br>");
+          						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"saveConsole()\">");
+          					}
+          					else
+          					{
+          						out.print("<br>");
+          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" value=\"" + conbean.getDescription() + "\" readonly required>");
+          						out.print("<br>");
+          						out.print("<input type=\"submit\" value=\"Modifica\" class\"admin-binput binputw\" onclick=\"unlockConsole()\">");
+          						out.print("<input type=\"submit\" value=\"Salva\" class=\"admib-binput binputw\" onclick=\"modifyConsole()\">");
+          						out.print("<input type=\"submit\" value=\"Elimina\" class=\"admib-binput binputw\" onclick=\"deleteConsole()\">");
+          					}
+          				}
+        			%>
         		</div>
         
        	 		<div id="gameinfo" class="hidecont">
@@ -134,6 +187,7 @@
           			String role = "Ruolo: ";
           			if(searchuser.isAdmin()) role = role.concat("Amministratore");
           			else role = role.concat("Utente");
+          			out.print(role);
           			out.print("</p>");
           		}
         	%>

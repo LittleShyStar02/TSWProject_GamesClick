@@ -19,7 +19,9 @@ public class CategoryModel implements EntityBeanModel<CategoryBean>
 		Connection conn = null;
 		PreparedStatement ps = null;
 		int result = 0;
-
+		
+		CategoriaGiocoModel.doDeleteByCategory(entity);
+		
 		try {
 			
 			conn = ConnectionPool.getConnection();
@@ -157,6 +159,33 @@ public class CategoryModel implements EntityBeanModel<CategoryBean>
 		}
 		
 		return key;
+	}
+
+	@Override
+	public boolean doUpdate(CategoryBean entity) throws SQLException {
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		boolean ok = false;
+		
+		try {
+			
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("UPDATE Categoria SET Descrizione = ? WHERE Nome = ?");
+			ps.setString(1, entity.getDescription());
+			ps.setString(2, entity.getName());
+			ps.executeUpdate();
+			conn.commit();
+			ok = true;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return ok;
 	}
 
 }

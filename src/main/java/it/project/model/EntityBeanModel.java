@@ -11,5 +11,6 @@ public interface EntityBeanModel<Type>
 	public Type doRetrieveByKey(String key) throws SQLException;
 	public Collection<Type> doRetrieveAll(String order) throws SQLException;
 	public boolean doSave(Type entity) throws SQLException;
+	public boolean doUpdate(Type entity) throws SQLException;
 
 }

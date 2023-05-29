@@ -161,4 +161,30 @@ public class ConsoleModel implements EntityBeanModel<ConsoleBean>
 		return key;
 	}
 
+	@Override
+	public boolean doUpdate(ConsoleBean entity) throws SQLException {
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		boolean ok = false;
+		
+		try {
+			
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("UPDATE Console SET Descrizione = ? WHERE Nome = ?");
+			ps.setString(1, entity.getDescription());
+			ps.setString(2, entity.getName());
+			ps.executeUpdate();
+			conn.commit();
+			ok = true;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return ok;
+	}
 }

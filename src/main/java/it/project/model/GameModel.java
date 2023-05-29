@@ -22,6 +22,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 		int result = 0;
 
 		EsecuzioneGiocoModel.doDeleteByGame(entity);
+		CategoriaGiocoModel.doDeleteByGame(entity);
 		
 		try {
 			
@@ -175,6 +176,11 @@ public class GameModel implements EntityBeanModel<GameBean>
 		}
 		
 		return key;
+	}
+
+	@Override
+	public boolean doUpdate(GameBean entity) throws SQLException {
+		return false;
 	}
 
 }
