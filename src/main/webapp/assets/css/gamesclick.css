@@ -310,3 +310,82 @@ footer div a {
     left: 5%;
     top: 25%;
 }
+
+/*
+  ACCOUNT STYLE
+*/
+.user-div {
+    background-color:#295180;
+    position: absolute;
+    top: 20%;
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 65%;
+    border-style: double;
+}
+
+.sidebar {
+    float: left;
+    display: block;
+    padding: 0;
+    width: 20%;
+    background-color: #636466;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Sidebar links */
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+    background-color: #295180;
+    color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+    width: 100%;
+    background-color: transparent;
+    opacity: 1;
+    height: auto;
+}
+
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
