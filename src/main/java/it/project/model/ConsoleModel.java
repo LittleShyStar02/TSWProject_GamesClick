@@ -28,7 +28,7 @@ public class ConsoleModel implements EntityBeanModel<ConsoleBean>
 			ps = conn.prepareStatement("DELETE FROM Console WHERE Nome = ?");
 			ps.setString(1, entity.getName());
 			result = ps.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if (ps != null)

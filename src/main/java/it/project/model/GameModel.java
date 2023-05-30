@@ -30,7 +30,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 			ps = conn.prepareStatement("DELETE FROM Gioco WHERE Nome = ?");
 			ps.setString(1, entity.getName());
 			result = ps.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if (ps != null)

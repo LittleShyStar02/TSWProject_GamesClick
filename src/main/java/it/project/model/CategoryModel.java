@@ -28,7 +28,7 @@ public class CategoryModel implements EntityBeanModel<CategoryBean>
 			ps = conn.prepareStatement("DELETE FROM Categoria WHERE Nome = ?");
 			ps.setString(1, entity.getName());
 			result = ps.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if (ps != null)
@@ -146,7 +146,7 @@ public class CategoryModel implements EntityBeanModel<CategoryBean>
 
 			while (set.next()) 
 			{
-				key = set.getInt("IDConsole");
+				key = set.getInt("IDCategoria");
 			}
 
 		} finally {

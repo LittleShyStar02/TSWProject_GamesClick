@@ -96,7 +96,7 @@
           <br>
           <fieldset class="fieldset-form" style="padding: 2%;border: none">
           	<legend id="search_type_text" style="font-size: 20px;color: pink;"></legend>
-          	<form action="AdminPanel" method="post" id="secondForm" class="adminManager" onsubmit="setParameter('secondForm','searchthing',getFromType(),getInputDataType())">
+          	<form action="AdminPanel" method="post" id="secondForm" class="adminManager" onsubmit="setParameter('secondForm','searchthing',getFromType(),getInputDataType());">
           		<input type="text" id="firstToShow2" name="firstToShow" style="display: none;">
           		<input type="text" id="secondToShow2" name="secondToShow" style="display: none;">
           		<input type="text" id="dataType2" name="dataType" style="display: none;">
@@ -117,18 +117,21 @@
           					if(catbean.getName() == null) 
           					{
           						out.print("<p>Categoria inesistente. Creala</p>");
-          						out.print("<textarea id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\" required></textarea>");
+          						out.print("<br>");
+          						out.print("<textarea id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\"></textarea>");
+          						out.print("<p id=\"errordesc\"></p>");
           						out.print("<br>");
           						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createCategory()\">");
           					}
           					else
           					{
           						out.print("<br>");
-          						out.print("<textarea type=\"text\" id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" value=\"" + catbean.getDescription() + "\" readonly required></textarea>");
+          						out.print("<textarea type=\"text\" id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock readonly\" readonly>" + catbean.getDescription() + "</textarea>");
+          						out.print("<p id=\"errordesc\"></p>");
           						out.print("<br>");
-          						out.print("<input type=\"submit\" value=\"Modifica\" class\"admin-binput binputw\" onclick=\"unlockCategory()\">");
-          						out.print("<input type=\"submit\" value=\"Salva\" class=\"admib-binput binputw\" onclick=\"modifyCategory()\">");
-          						out.print("<input type=\"submit\" value=\"Elimina\" class=\"admib-binput binputw\" onclick=\"deleteCategory()\">");
+          						out.print("<input type=\"button\" value=\"Clicca per modificare\" class=\"admin-binput binputw\" onclick=\"unlockCategory()\">");
+          						out.print("<input type=\"button\" value=\"Salva\" class=\"admin-binput binputw\" onclick=\"modifyCategory()\">");
+          						out.print("<input type=\"button\" value=\"Elimina\" class=\"admin-binput binputw\" onclick=\"deleteCategory()\">");
           					}
           				}
         			%>
@@ -145,18 +148,20 @@
           					if(conbean.getName() == null) 
           					{
           						out.print("<p>Console inesistente. Creala</p>");
-          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\" required></textarea>");
+          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\"></textarea>");
+          						out.print("<p id=\"errordesc2\"></p>");
           						out.print("<br>");
-          						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"saveConsole()\">");
+          						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createConsole()\">");
           					}
           					else
           					{
           						out.print("<br>");
-          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" value=\"" + conbean.getDescription() + "\" readonly required>");
+          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock readonly\" readonly >" + conbean.getDescription() + "</textarea>");
+          						out.print("<p id=\"errordesc2\"></p>");
           						out.print("<br>");
-          						out.print("<input type=\"submit\" value=\"Modifica\" class\"admin-binput binputw\" onclick=\"unlockConsole()\">");
-          						out.print("<input type=\"submit\" value=\"Salva\" class=\"admib-binput binputw\" onclick=\"modifyConsole()\">");
-          						out.print("<input type=\"submit\" value=\"Elimina\" class=\"admib-binput binputw\" onclick=\"deleteConsole()\">");
+          						out.print("<input type=\"button\" value=\"Clicca per modificare\" class=\"admin-binput binputw\" onclick=\"unlockConsole()\">");
+          						out.print("<input type=\"button\" value=\"Salva\" class=\"admin-binput binputw\" onclick=\"modifyConsole()\">");
+          						out.print("<input type=\"button\" value=\"Elimina\" class=\"admin-binput binputw\" onclick=\"deleteConsole()\">");
           					}
           				}
         			%>

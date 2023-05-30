@@ -23,7 +23,7 @@ public class EsecuzioneGiocoModel
 			ps = conn.prepareStatement("DELETE FROM EsecuzioneGioco WHERE IDConsole = ?");
 			ps.setInt(1, new ConsoleModel().doRetrieveKey(entity.getName()));
 			result = ps.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if (ps != null)
@@ -47,7 +47,7 @@ public class EsecuzioneGiocoModel
 			ps = conn.prepareStatement("DELETE FROM EsecuzioneGioco WHERE IDGioco = ?");
 			ps.setInt(1, new GameModel().doRetrieveKey(entity.getName()));
 			result = ps.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if (ps != null)
@@ -77,7 +77,8 @@ public class EsecuzioneGiocoModel
 			ps = conn.prepareStatement("INSERT INTO EsecuzioneGioco(IDConsole, IDGioco) VALUES (?, ?)");
 			ps.setString(1, console_key);
 			ps.setString(2, game_key);
-			conn.commit();		
+			ps.executeUpdate();
+			conn.commit();
 		} finally {
 			try {
 				if (ps != null)

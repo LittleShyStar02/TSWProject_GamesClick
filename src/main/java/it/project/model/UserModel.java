@@ -32,7 +32,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 			ps2.setString(1, entity.getEmail());
 			result = ps.executeUpdate();
 			ps2.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if(ps != null) ps.close();
@@ -57,7 +57,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 			ps = conn.prepareStatement("DELETE FROM Amministratore WHERE Email = ?");
 			ps.setString(1, entity.getEmail());
 			result = ps.executeUpdate();
-
+			conn.commit();
 		} finally {
 			try {
 				if(ps != null) ps.close();

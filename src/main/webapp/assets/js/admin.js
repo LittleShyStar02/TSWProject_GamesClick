@@ -61,7 +61,6 @@ function setParameter(form,first,second,type)
         if(type != null) document.getElementById('dataType2').value = type;
         return true;
     }
-
     return false;
 }
 
@@ -73,6 +72,7 @@ function setPlaceholder(id,text)
 function setReadOnly(id)
 {
     document.getElementById(id).readOnly = true;
+    document.getElementById(id).classList.add('readonly');
 }
 
 function show(idtoshow)
@@ -128,4 +128,100 @@ function visualize(firstToShow,secondToShow,dataType)
         setReadOnly('search_datatype');
     }
 
+}
+
+/*
+  CATEGORY FUNCTION
+*/
+function createCategory()
+{
+    if(checkCatDesc()) 
+    {
+        document.getElementById('action_form').value = "create_category";
+        document.getElementById('secondForm').submit();
+    }
+}
+
+function unlockCategory()
+{
+    var tmp = document.getElementById('catdesc');
+    tmp.readOnly = false;
+    tmp.classList.remove('readonly');
+}
+
+function modifyCategory()
+{
+    if(checkCatDesc()) 
+    {
+        document.getElementById('action_form').value = "modify_category";
+        document.getElementById('secondForm').submit();
+    }
+}
+
+function deleteCategory()
+{
+    document.getElementById('action_form').value = "delete_category";
+    document.getElementById('secondForm').submit();
+}
+
+function checkCatDesc()
+{
+    var text = document.getElementById('catdesc').value;
+    if(text == '' || text == null)
+    {
+        document.getElementById('errordesc').innerHTML = "Descrizione richiesta";
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+/*
+  CONSOLE FUNCTION
+*/
+function createConsole()
+{
+    if(checkConDesc())
+    {
+        document.getElementById('action_form').value = "create_console";
+        document.getElementById('secondForm').submit();
+    }
+}
+
+function unlockConsole()
+{
+    var tmp = document.getElementById('condesc');
+    tmp.readOnly = false;
+    tmp.classList.remove('readonly');
+}
+
+function modifyConsole()
+{
+    if(checkConDesc())
+    {
+        document.getElementById('action_form').value = "modify_console";
+        document.getElementById('secondForm').submit();
+    }
+}
+
+function deleteConsole()
+{
+    document.getElementById('action_form').value = "delete_console";
+    document.getElementById('secondForm').submit();
+}
+
+function checkConDesc()
+{
+    var text = document.getElementById('condesc').value;
+    if(text == '' || text == null)
+    {
+        document.getElementById('errordesc2').innerHTML = "Descrizione richiesta";
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
