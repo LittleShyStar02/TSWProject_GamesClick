@@ -12,6 +12,10 @@ public class AdminNotExists extends IOException
 		message = "L'utente non è un amministratore";
 	}
 	
+	public AdminNotExists(String message) {
+		this.message = message;
+	}
+	
 	public String getMessage()
 	{
 		return message;

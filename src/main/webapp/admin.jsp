@@ -168,7 +168,51 @@
         		</div>
         
        	 		<div id="gameinfo" class="hidecont">
-        			Game
+        			<%@page import="it.project.bean.GameBean,it.project.model.GameModel" %>
+        			<%
+        				if(datasearch == null) out.print("<p>Errore durante la comunicazione con il server</p>");
+        				else
+        				{
+        					GameBean gamebean = new GameModel().doRetrieveByKey(datasearch);
+        					if(gamebean.getName() == null)
+        					{
+        						out.print("<p>Gioco inesistente. Crealo</p>");
+        						out.print("<textarea type=\"text\" id=\"gamedesc\" name=\"gamedesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\"></textarea>");
+        						out.print("<p id=\"errordesc3\"></p>");
+        						out.print("<br><br>");
+        						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" size=32 required>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" size=32 placeholder=\"Prezzo...\" required>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"number\" id=\"minage\" name=\"minage\" size=32 placeholder=\"Età Minima...\" required>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" size=32 placeholder=\"Game Image Url...\" required>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" required>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createGame()\">");
+        					}
+        					else
+        					{
+        						out.print("<textarea type=\"text\" id=\"gamedesc\" name=\"gamedesc\" class=\"textarea-lock readonly\" placeholder=\"Descrizione...\">" + gamebean.getDescription() + "</textarea>");
+        						out.print("<p id=\"errordesc3\"></p>");
+        						out.print("<br><br>");
+        						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" class=\"readonly\" size=32 value=\"" + Utility.dateToMysql(gamebean.getReleaseDate()) + "\" required readonly>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" size=32 placeholder=\"Prezzo...\" class=\"readonly\" value=\"" + gamebean.getPrice() + "\" required readonly>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"number\" id=\"minage\" name=\"minage\" size=32 placeholder=\"Età Minima...\" class=\"readonly\" value=\"" + gamebean.getMinAge() + "\" required readonly>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" size=32 placeholder=\"Game Image Url...\" class=\"readonly\" value=\"" + gamebean.getPreview() + "\" required readonly>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" class=\"readonly\" value=\"" + new UserModel().doRetrieveByKey(gamebean.getAdminKey()).getEmail() + "\" required readonly>");
+        						out.print("<br><br>");
+        						out.print("<input type=\"button\" value=\"Clicca per modificare\" class=\"admin-binput binputw\" onclick=\"unlockGame()\">");
+          						out.print("<input type=\"button\" value=\"Salva\" class=\"admin-binput binputw\" onclick=\"modifyGame()\">");
+          						out.print("<input type=\"button\" value=\"Elimina\" class=\"admin-binput binputw\" onclick=\"deleteGame()\">");
+        					}
+        				}
+        			%>
         		</div>
           	</form>
           </fieldset>

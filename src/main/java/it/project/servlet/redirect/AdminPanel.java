@@ -6,12 +6,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Iterator;
+import java.sql.Date;
 
 import it.project.bean.CategoryBean;
 import it.project.bean.ConsoleBean;
+import it.project.bean.GameBean;
+import it.project.exception.AdminNotExists;
 import it.project.model.CategoryModel;
 import it.project.model.ConsoleModel;
+import it.project.model.GameModel;
+import it.project.model.UserModel;
 
 /**
  * Servlet implementation class Account
@@ -45,24 +51,33 @@ public class AdminPanel extends HttpServlet {
 						if(saveCategory(request,"create")) message = "Categoria creata con successo";
 						break;
 					case "modify_category":
-						if(saveCategory(request,"modify")) message ="Categoria modificata con successo";
+						if(saveCategory(request,"modify")) message = "Categoria modificata con successo";
 						break;
 					case "delete_category":
-						if(saveCategory(request,"delete")) message ="Categoria eliminata con successo";
+						if(saveCategory(request,"delete")) message = "Categoria eliminata con successo";
 						break;
 					case "create_console":
 						if(saveConsole(request,"create")) message = "Console creata con successo";
 						break;
 					case "modify_console":
-						if(saveConsole(request,"modify")) message ="Console modificata con successo";
+						if(saveConsole(request,"modify")) message = "Console modificata con successo";
 						break;
 					case "delete_console":
-						if(saveConsole(request,"delete")) message ="Console eliminata con successo";
+						if(saveConsole(request,"delete")) message = "Console eliminata con successo";
+						break;
+					case "create_game":
+						if(saveGame(request,"create")) message = "Gioco creato con successo";
+						break;
+					case "modify_game":
+						if(saveGame(request,"modify")) message = "Gioco modificato con successo";
+						break;
+					case "delete_game":
+						if(saveGame(request,"delete")) message = "Gioco eliminato con successo";
 						break;
 				}
 			}
 		}
-		catch(SQLException e)
+		catch(SQLException | ParseException | AdminNotExists e)
 		{
 			message = e.getMessage();
 		}
@@ -146,6 +161,51 @@ public class AdminPanel extends HttpServlet {
 			case "create":
 				return model.doSave(bean);
 			case "modify":
+				return model.doUpdate(bean);
+			case "delete":
+				return model.doDelete(bean);
+		}
+		
+		return false;
+	}
+	
+	public boolean saveGame(HttpServletRequest request,String atype) throws SQLException, ParseException, AdminNotExists
+	{
+		String name = request.getParameter("search_datatype");
+		String desc = request.getParameter("gamedesc");
+		Date date = Date.valueOf(request.getParameter("gamedate"));
+		double price = Double.parseDouble(request.getParameter("gameprice"));
+		int age = Integer.parseInt(request.getParameter("minage"));
+		String url = request.getParameter("gameurl");
+		String email = request.getParameter("gameadmin");
+		
+		GameBean bean = new GameBean();
+		bean.setName(name);
+		bean.setDescription(desc);
+		bean.setPrice(price);
+		bean.setMinAge(age);
+		bean.setReleaseDate(date);
+		bean.setPreview(url);
+		
+		int key = new UserModel().doRetrieveAdminKey(email);
+		bean.setAdminKey(key);
+		
+		GameModel model = new GameModel();
+		
+		switch(atype)
+		{
+			case "create":
+				
+				if(key == -1)
+				{
+					throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
+				}
+				return model.doSave(bean);
+			case "modify":
+				if(key == -1)
+				{
+					throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
+				}
 				return model.doUpdate(bean);
 			case "delete":
 				return model.doDelete(bean);

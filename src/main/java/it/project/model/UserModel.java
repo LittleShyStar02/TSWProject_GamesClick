@@ -26,12 +26,14 @@ public class UserModel implements EntityBeanModel<UserBean>
 		try {
 			
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("DELETE FROM Utente WHERE Email = ?");
 			ps2 = conn.prepareStatement("DELETE FROM Amministratore WHERE Email = ?");
-			ps.setString(1, entity.getEmail());
 			ps2.setString(1, entity.getEmail());
-			result = ps.executeUpdate();
 			ps2.executeUpdate();
+			conn.commit();
+			
+			ps = conn.prepareStatement("DELETE FROM Utente WHERE Email = ?");
+			ps.setString(1, entity.getEmail());
+			result = ps.executeUpdate();
 			conn.commit();
 		} finally {
 			try {
@@ -82,6 +84,49 @@ public class UserModel implements EntityBeanModel<UserBean>
 
 			ResultSet set = ps.executeQuery();
 
+			while (set.next()) 
+			{
+				user.setName(set.getString("Nome"));
+				user.setSurname(set.getString("Cognome"));
+				user.setEmail(set.getString("Email"));
+				user.setPassword(set.getString("Password"));
+				user.setBornDate(set.getDate("DataNascita"));
+				user.setAddress(set.getString("Indirizzo"));
+				
+				ps2 = conn.prepareStatement("SELECT * FROM Amministratore WHERE Email = ?");
+				ps2.setString(1,user.getEmail());
+				ResultSet set2 = ps2.executeQuery();
+				while(set2.next())
+				{
+					user.setAdmin(set2.getRow() != 0);
+				}
+				ps2.close();
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return user;
+	}
+	
+	public synchronized UserBean doRetrieveByKey(int id) throws SQLException 
+	{
+		Connection conn = null;
+		PreparedStatement ps = null, ps2= null;
+		UserBean user = new UserBean();
+
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM Utente WHERE IDUtente = ?");
+			ps.setInt(1, id);
+
+			ResultSet set = ps.executeQuery();
+			
 			while (set.next()) 
 			{
 				user.setName(set.getString("Nome"));
@@ -228,6 +273,36 @@ public class UserModel implements EntityBeanModel<UserBean>
 			while (set.next()) 
 			{
 				key = set.getInt("IDUtente");
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		
+		return key;
+	}
+	
+	public int doRetrieveAdminKey(String email) throws SQLException {
+		int key = -1;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM Amministratore WHERE Email = ?");
+			ps.setString(1, email);
+
+			ResultSet set = ps.executeQuery();
+
+			while (set.next()) 
+			{
+				key = set.getInt("IDAdmin");
 			}
 
 		} finally {

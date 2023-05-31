@@ -180,7 +180,34 @@ public class GameModel implements EntityBeanModel<GameBean>
 
 	@Override
 	public boolean doUpdate(GameBean entity) throws SQLException {
-		return false;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		boolean ok = false;
+		
+		try {
+			
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("UPDATE Gioco SET Descrizione = ?, Prezzo = ?, DataRilascio = ?, EtaMinima = ?, PreviewUrl = ?, IDAdmin = ? WHERE Nome = ?");
+			ps.setString(1, entity.getDescription());
+			ps.setDouble(2, entity.getPrice());
+			ps.setString(3, Utility.dateToMysql(entity.getReleaseDate()));
+			ps.setInt(4, entity.getMinAge());
+			ps.setString(5, entity.getPreview());
+			ps.setInt(6, entity.getAdminKey());
+			ps.setString(7, entity.getName());
+			ps.executeUpdate();
+			conn.commit();
+			ok = true;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return ok;
 	}
 
 }

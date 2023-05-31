@@ -80,6 +80,12 @@ function show(idtoshow)
     document.getElementById(idtoshow).classList.add('showcont');
 }
 
+function unlock(id)
+{
+    var tmp = document.getElementById(id);
+    tmp.readOnly = false;
+    tmp.classList.remove('readonly');
+}
 
 function visualize(firstToShow,secondToShow,dataType)
 {
@@ -144,9 +150,7 @@ function createCategory()
 
 function unlockCategory()
 {
-    var tmp = document.getElementById('catdesc');
-    tmp.readOnly = false;
-    tmp.classList.remove('readonly');
+    unlock('catdesc');
 }
 
 function modifyCategory()
@@ -192,9 +196,7 @@ function createConsole()
 
 function unlockConsole()
 {
-    var tmp = document.getElementById('condesc');
-    tmp.readOnly = false;
-    tmp.classList.remove('readonly');
+    unlock('condesc');
 }
 
 function modifyConsole()
@@ -224,4 +226,53 @@ function checkConDesc()
     {
         return true;
     }
+}
+
+/*
+  GAME FUNCTION
+*/
+function createGame()
+{
+    if(checkGameValue())
+    {
+        document.getElementById('action_form').value = "create_game";
+        document.getElementById('secondForm').submit();
+    }
+}
+
+function unlockGame()
+{
+    unlock('gamedesc');
+    unlock('gamedate');
+    unlock('gameprice');
+    unlock('minage');
+    unlock('gameurl');
+    unlock('gameadmin');
+}
+
+
+function modifyGame()
+{
+    if(checkGameValue())
+    {
+        document.getElementById('action_form').value = "modify_game";
+        document.getElementById('secondForm').submit();
+    }
+}
+
+function deleteGame()
+{
+    document.getElementById('action_form').value = "delete_game";
+    document.getElementById('secondForm').submit();
+}
+
+function checkGameValue()
+{
+    var text = document.getElementById('gamedesc').value;
+    if(text == '' || text == null)
+    {
+        document.getElementById('errordesc3').innerHTML = "Descrizione richiesta";
+        return false;
+    }
+    return true;
 }
