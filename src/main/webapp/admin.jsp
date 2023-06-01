@@ -19,6 +19,7 @@
     <script src="assets/js/admin.js"></script>
   </head>
 
+  <%@page import="it.project.model.EsecuzioneGiocoModel,it.project.model.CategoriaGiocoModel" %>
   <%
   	String datasearch = request.getParameter("datasearch");
   	String onload = "visualize({first},{second},{type});setDataSearch('" + datasearch + "');";
@@ -168,7 +169,7 @@
         		</div>
         
        	 		<div id="gameinfo" class="hidecont">
-        			<%@page import="it.project.bean.GameBean,it.project.model.GameModel" %>
+        			<%@page import="it.project.bean.GameBean,it.project.model.GameModel,java.util.Collection,java.util.Iterator" %>
         			<%
         				if(datasearch == null) out.print("<p>Errore durante la comunicazione con il server</p>");
         				else
@@ -190,6 +191,41 @@
         						out.print("<br><br>");
         						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" required>");
         						out.print("<br><br>");
+        						out.print("<input <type=\"text\" id=\"gameconsole\" name=\"gameconsole\" style=\"display: none\">");
+        						out.print("<h3>Console</h3><br>");
+        						
+        						Collection<ConsoleBean> conlist = new ConsoleModel().doRetrieveAll("ASC");
+        						if(!conlist.isEmpty())
+        						{
+        							Iterator<ConsoleBean> iconsole = conlist.iterator();
+        							int cid = 1;
+        							while(iconsole.hasNext())
+        							{
+        								ConsoleBean console = iconsole.next();
+        								out.print("<input type=\"checkbox\" id=\"con" + cid + "\" value=\"" + console.getName() + "\">");
+        								out.print("<label for=\"con" + cid + "\">" + console.getName() + "</label><br><br>");
+        								cid++;
+        							}
+        						}
+        						
+        						out.print("<input <type=\"text\" id=\"gamecategory\" name=\"gamecategory\" style=\"display: none\">");
+        						out.print("<h3>Categorie</h3><br>");
+        						Collection<CategoryBean> catlist = new CategoryModel().doRetrieveAll("ASC");
+        						if(!catlist.isEmpty())
+        						{
+        							Iterator<CategoryBean> icat = catlist.iterator();
+        							int cid = 1;
+        							while(icat.hasNext())
+        							{
+        								CategoryBean catbean = icat.next();
+        								out.print("<input type=\"checkbox\" id=\"cat" + cid + "\" value=\"" + catbean.getName() + "\">");
+        								out.print("<label for=\"cat" + cid + "\">" + catbean.getName() + "</label><br><br>");
+        								cid++;
+        							}
+        						}
+        						
+        						
+        						out.print("<br><br>");
         						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createGame()\">");
         					}
         					else
@@ -205,8 +241,58 @@
         						out.print("<br><br>");
         						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" size=32 placeholder=\"Game Image Url...\" class=\"readonly\" value=\"" + gamebean.getPreview() + "\" required readonly>");
         						out.print("<br><br>");
-        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" class=\"readonly\" value=\"" + new UserModel().doRetrieveByKey(gamebean.getAdminKey()).getEmail() + "\" required readonly>");
+        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" class=\"readonly\" value=\"" + new UserModel().adminMailByKey(gamebean.getAdminKey()) + "\" required readonly>");
         						out.print("<br><br>");
+        						
+        						out.print("<input <type=\"text\" id=\"gameconsole\" name=\"gameconsole\" style=\"display: none\">");
+        						out.print("<h3>Console</h3><br>");
+        						
+        						Collection<ConsoleBean> conlist = new ConsoleModel().doRetrieveAll("ASC");
+        						if(!conlist.isEmpty())
+        						{
+        							Iterator<ConsoleBean> iconsole = conlist.iterator();
+        							int cid = 1;
+        							while(iconsole.hasNext())
+        							{
+        								ConsoleBean console = iconsole.next();
+        								if(EsecuzioneGiocoModel.exists(console.getName(), gamebean.getName()))
+        								{
+        									out.print("<input type=\"checkbox\" id=\"con" + cid + "\" value=\"" + console.getName() + "\" checked disabled>");
+            								out.print("<label for=\"con" + cid + "\">" + console.getName() + "</label><br><br>");
+        								}
+        								else
+        								{
+        									out.print("<input type=\"checkbox\" id=\"con" + cid + "\" value=\"" + console.getName() + "\" disabled>");
+            								out.print("<label for=\"con" + cid + "\">" + console.getName() + "</label><br><br>");
+        								}
+        								cid++;
+        							}
+        						}
+        						
+        						out.print("<input <type=\"text\" id=\"gamecategory\" name=\"gamecategory\" style=\"display: none\">");
+        						out.print("<h3>Categorie</h3><br>");
+        						Collection<CategoryBean> catlist = new CategoryModel().doRetrieveAll("ASC");
+        						if(!catlist.isEmpty())
+        						{
+        							Iterator<CategoryBean> icat = catlist.iterator();
+        							int cid = 1;
+        							while(icat.hasNext())
+        							{
+        								CategoryBean catbean = icat.next();
+        								if(CategoriaGiocoModel.exists(catbean.getName(), gamebean.getName()))
+        								{
+        									out.print("<input type=\"checkbox\" id=\"cat" + cid + "\" value=\"" + catbean.getName() + "\" checked disabled>");
+            								out.print("<label for=\"cat" + cid + "\">" + catbean.getName() + "</label><br><br>");
+        								}
+        								else
+        								{
+        									out.print("<input type=\"checkbox\" id=\"cat" + cid + "\" value=\"" + catbean.getName() + "\" disabled>");
+            								out.print("<label for=\"cat" + cid + "\">" + catbean.getName() + "</label><br><br>");
+        								}
+        								cid++;
+        							}
+        						}
+        						
         						out.print("<input type=\"button\" value=\"Clicca per modificare\" class=\"admin-binput binputw\" onclick=\"unlockGame()\">");
           						out.print("<input type=\"button\" value=\"Salva\" class=\"admin-binput binputw\" onclick=\"modifyGame()\">");
           						out.print("<input type=\"button\" value=\"Elimina\" class=\"admin-binput binputw\" onclick=\"deleteGame()\">");

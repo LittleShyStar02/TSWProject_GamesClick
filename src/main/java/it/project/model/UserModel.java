@@ -114,36 +114,22 @@ public class UserModel implements EntityBeanModel<UserBean>
 		return user;
 	}
 	
-	public synchronized UserBean doRetrieveByKey(int id) throws SQLException 
+	public synchronized String adminMailByKey(int id) throws SQLException 
 	{
 		Connection conn = null;
-		PreparedStatement ps = null, ps2= null;
-		UserBean user = new UserBean();
+		PreparedStatement ps = null;
+		String mail = null;
 
 		try {
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Utente WHERE IDUtente = ?");
+			ps = conn.prepareStatement("SELECT * FROM Amministratore WHERE IDAdmin = ?");
 			ps.setInt(1, id);
 
 			ResultSet set = ps.executeQuery();
 			
 			while (set.next()) 
 			{
-				user.setName(set.getString("Nome"));
-				user.setSurname(set.getString("Cognome"));
-				user.setEmail(set.getString("Email"));
-				user.setPassword(set.getString("Password"));
-				user.setBornDate(set.getDate("DataNascita"));
-				user.setAddress(set.getString("Indirizzo"));
-				
-				ps2 = conn.prepareStatement("SELECT * FROM Amministratore WHERE Email = ?");
-				ps2.setString(1,user.getEmail());
-				ResultSet set2 = ps2.executeQuery();
-				while(set2.next())
-				{
-					user.setAdmin(set2.getRow() != 0);
-				}
-				ps2.close();
+				mail = set.getString("Email");
 			}
 
 		} finally {
@@ -154,7 +140,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 				ConnectionPool.releaseConnection(conn);
 			}
 		}
-		return user;
+		return mail;
 	}
 
 	@Override
@@ -168,7 +154,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 		{
 			users = new LinkedList<UserBean>();
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Utente ORDER BY " + order);
+			ps = conn.prepareStatement("SELECT * FROM Utente ORDER BY Nome,Congome,Email " + order);
 			ResultSet set = ps.executeQuery();
 
 			while (set.next()) 

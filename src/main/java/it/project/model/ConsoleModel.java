@@ -80,7 +80,7 @@ public class ConsoleModel implements EntityBeanModel<ConsoleBean>
 		try
 		{
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Console ORDER BY " + order);
+			ps = conn.prepareStatement("SELECT * FROM Console ORDER BY Nome " + order);
 			consoles = new LinkedList<ConsoleBean>();
 			ResultSet set = ps.executeQuery();
 			ConsoleBean console;

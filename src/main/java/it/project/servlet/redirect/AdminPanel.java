@@ -14,8 +14,10 @@ import it.project.bean.CategoryBean;
 import it.project.bean.ConsoleBean;
 import it.project.bean.GameBean;
 import it.project.exception.AdminNotExists;
+import it.project.model.CategoriaGiocoModel;
 import it.project.model.CategoryModel;
 import it.project.model.ConsoleModel;
+import it.project.model.EsecuzioneGiocoModel;
 import it.project.model.GameModel;
 import it.project.model.UserModel;
 
@@ -179,6 +181,8 @@ public class AdminPanel extends HttpServlet {
 		String url = request.getParameter("gameurl");
 		String email = request.getParameter("gameadmin");
 		
+		boolean check = false;
+		
 		GameBean bean = new GameBean();
 		bean.setName(name);
 		bean.setDescription(desc);
@@ -200,18 +204,66 @@ public class AdminPanel extends HttpServlet {
 				{
 					throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
 				}
-				return model.doSave(bean);
+				if(model.doSave(bean))
+				{
+					check = true;
+					if(request.getParameter("gameconsole") != null)
+					{
+						saveGameConsole(request,name);
+					}
+					if(request.getParameter("gamecategory") != null)
+					{
+						saveGameCategory(request,name);
+					}
+				}
+				return check;
 			case "modify":
 				if(key == -1)
 				{
 					throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
 				}
-				return model.doUpdate(bean);
+				if(model.doUpdate(bean))
+				{
+					check = true;
+					EsecuzioneGiocoModel.doDeleteByGame(bean);
+					if(request.getParameter("gameconsole") != null)
+					{
+						saveGameConsole(request,name);
+					}
+					CategoriaGiocoModel.doDeleteByGame(bean);
+					if(request.getParameter("gamecategory") != null)
+					{
+						saveGameCategory(request,name);
+					}
+				}
+				return check;
 			case "delete":
 				return model.doDelete(bean);
 		}
 		
 		return false;
+	}
+	
+	public void saveGameConsole(HttpServletRequest request,String name) throws SQLException
+	{
+		String str = request.getParameter("gameconsole");
+		if(str.contains(";"))
+		{
+			String[] strs = str.split(";");
+			for(String tmp : strs) EsecuzioneGiocoModel.doSave(tmp, name);
+		}
+		else EsecuzioneGiocoModel.doSave(str, name);
+	}
+	
+	public void saveGameCategory(HttpServletRequest request,String name) throws SQLException
+	{
+		String str = request.getParameter("gamecategory");
+		if(str.contains(";"))
+		{
+			String[] strs = str.split(";");
+			for(String tmp : strs) CategoriaGiocoModel.doSave(tmp, name);
+		}
+		else CategoriaGiocoModel.doSave(str, name);
 	}
 
 }

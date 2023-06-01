@@ -22,7 +22,7 @@ public class Utility
 	{
 		Calendar cal = new GregorianCalendar();
 		cal.setTime(date);
-		String month = String.valueOf(cal.get(Calendar.MONTH));
+		String month = String.valueOf(cal.get(Calendar.MONTH)+1);
 		if(month.length() == 1 && !month.matches("0\\w")) month = "0".concat(month);
 		String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
 		if(day.length() == 1 && !day.matches("0\\w")) day = "0".concat(day);

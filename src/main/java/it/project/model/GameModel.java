@@ -1,6 +1,7 @@
 package it.project.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,7 +88,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 		try
 		{
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Gioco ORDER BY " + order);
+			ps = conn.prepareStatement("SELECT * FROM Gioco ORDER BY Nome " + order);
 			games = new LinkedList<GameBean>();
 			ResultSet set = ps.executeQuery();
 			GameBean game;
@@ -191,7 +192,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 			ps = conn.prepareStatement("UPDATE Gioco SET Descrizione = ?, Prezzo = ?, DataRilascio = ?, EtaMinima = ?, PreviewUrl = ?, IDAdmin = ? WHERE Nome = ?");
 			ps.setString(1, entity.getDescription());
 			ps.setDouble(2, entity.getPrice());
-			ps.setString(3, Utility.dateToMysql(entity.getReleaseDate()));
+			ps.setDate(3, Date.valueOf(Utility.dateToMysql(entity.getReleaseDate())));
 			ps.setInt(4, entity.getMinAge());
 			ps.setString(5, entity.getPreview());
 			ps.setInt(6, entity.getAdminKey());
