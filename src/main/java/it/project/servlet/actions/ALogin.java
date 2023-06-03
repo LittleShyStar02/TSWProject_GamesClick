@@ -61,7 +61,7 @@ public class ALogin extends HttpServlet {
 			}
 			else
 			{
-				page = "/Login";
+				page = "/Home";
 				message = "Sei già autenticato";
 			}
 		}

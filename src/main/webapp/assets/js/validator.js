@@ -13,9 +13,31 @@ function validateReg()
         return false;
     }
 
-    if(document.getElementById('password').value != document.getElementById('password2'))
+    var pass = new String(document.getElementById('password').value);
+    var text = document.getElementById('password2error');
+    if(pass.length < 6 || pass.length > 32)
     {
-        document.getElementById('password2error').innerHTML = "Le password non corrispondono";
+        text.innerHTML = "Lunghezza password dai 6 ai 32 caratteri";
+        return false;
+    }
+
+    var exp2 = new RegExp("[A-Z]");
+    if(!exp2.test(pass))
+    {
+        text.innerHTML = "La password deve contenere una lettera maiuscola"
+        return false;
+    }
+
+    var exp3 = new RegExp("[0-9]");
+    if(!exp3.test(pass))
+    {
+        text.innerHTML = "La password deve contenere almeno un numero";
+        return false;
+    }
+
+    if(pass != document.getElementById('password2').value)
+    {
+        text.innerHTML = "Le password non corrispondono";
         return false;
     }
 

@@ -182,6 +182,7 @@
         						out.print("<p id=\"errordesc3\"></p>");
         						out.print("<br><br>");
         						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" size=32 required>");
+        						out.print("<p id=\"errordate\"></p>");
         						out.print("<br><br>");
         						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" size=32 placeholder=\"Prezzo...\" required>");
         						out.print("<br><br>");
@@ -234,6 +235,7 @@
         						out.print("<p id=\"errordesc3\"></p>");
         						out.print("<br><br>");
         						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" class=\"readonly\" size=32 value=\"" + Utility.dateToMysql(gamebean.getReleaseDate()) + "\" required readonly>");
+        						out.print("<p id=\"errordate\"></p>");
         						out.print("<br><br>");
         						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" size=32 placeholder=\"Prezzo...\" class=\"readonly\" value=\"" + gamebean.getPrice() + "\" required readonly>");
         						out.print("<br><br>");
@@ -313,7 +315,7 @@
           		if(searchuser.getEmail() == null) out.print("<p>Utente non trovato</p>");
           		else
           		{
-          			out.print("<fieldset class=\"fieldset-form\"><legend style=\"font-size: 20px;\">Informazioni Utente</legend><p>");
+          			out.print("<fieldset class=\"fieldset-form\" style=\"border: none;\"><legend style=\"font-size: 20px;\">Informazioni Utente</legend><p>");
           			out.print("Nome: " + searchuser.getName() + "<br>");
           			out.print("Cognome: " + searchuser.getSurname() + "<br>");
           			out.print("Email: " + searchuser.getEmail() + "<br>");

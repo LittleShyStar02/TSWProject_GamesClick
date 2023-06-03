@@ -196,45 +196,28 @@ public class AdminPanel extends HttpServlet {
 		
 		GameModel model = new GameModel();
 		
+		if(!atype.equals("delete") && key == -1)
+		{
+			throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
+		}
 		switch(atype)
 		{
 			case "create":
 				
-				if(key == -1)
-				{
-					throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
-				}
+				
 				if(model.doSave(bean))
 				{
 					check = true;
-					if(request.getParameter("gameconsole") != null)
-					{
-						saveGameConsole(request,name);
-					}
-					if(request.getParameter("gamecategory") != null)
-					{
-						saveGameCategory(request,name);
-					}
+					saveGameConsole(request,bean);
+					saveGameCategory(request,bean);
 				}
 				return check;
 			case "modify":
-				if(key == -1)
-				{
-					throw new AdminNotExists("L'email inserita non appartiene ad un amministratore");
-				}
 				if(model.doUpdate(bean))
 				{
 					check = true;
-					EsecuzioneGiocoModel.doDeleteByGame(bean);
-					if(request.getParameter("gameconsole") != null)
-					{
-						saveGameConsole(request,name);
-					}
-					CategoriaGiocoModel.doDeleteByGame(bean);
-					if(request.getParameter("gamecategory") != null)
-					{
-						saveGameCategory(request,name);
-					}
+					saveGameConsole(request,bean);
+					saveGameCategory(request,bean);
 				}
 				return check;
 			case "delete":
@@ -244,26 +227,34 @@ public class AdminPanel extends HttpServlet {
 		return false;
 	}
 	
-	public void saveGameConsole(HttpServletRequest request,String name) throws SQLException
+	public void saveGameConsole(HttpServletRequest request,GameBean bean) throws SQLException
 	{
-		String str = request.getParameter("gameconsole");
-		if(str.contains(";"))
+		EsecuzioneGiocoModel.doDeleteByGame(bean);
+		if(request.getParameter("gameconsole") != null)
 		{
-			String[] strs = str.split(";");
-			for(String tmp : strs) EsecuzioneGiocoModel.doSave(tmp, name);
+			String str = request.getParameter("gameconsole");
+			if(str.contains(";"))
+			{
+				String[] strs = str.split(";");
+				for(String tmp : strs) EsecuzioneGiocoModel.doSave(tmp, bean.getName());
+			}
+			else EsecuzioneGiocoModel.doSave(str, bean.getName());
 		}
-		else EsecuzioneGiocoModel.doSave(str, name);
 	}
 	
-	public void saveGameCategory(HttpServletRequest request,String name) throws SQLException
+	public void saveGameCategory(HttpServletRequest request,GameBean bean) throws SQLException
 	{
-		String str = request.getParameter("gamecategory");
-		if(str.contains(";"))
+		CategoriaGiocoModel.doDeleteByGame(bean);
+		if(request.getParameter("gamecategory") != null)
 		{
-			String[] strs = str.split(";");
-			for(String tmp : strs) CategoriaGiocoModel.doSave(tmp, name);
+			String str = request.getParameter("gamecategory");
+			if(str.contains(";"))
+			{
+				String[] strs = str.split(";");
+				for(String tmp : strs) CategoriaGiocoModel.doSave(tmp, bean.getName());
+			}
+			else CategoriaGiocoModel.doSave(str, bean.getName());
 		}
-		else CategoriaGiocoModel.doSave(str, name);
 	}
 
 }

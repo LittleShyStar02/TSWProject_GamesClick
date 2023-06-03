@@ -247,6 +247,12 @@ function checkGameValue() {
         document.getElementById('errordesc3').innerHTML = "Descrizione richiesta";
         return false;
     }
+    var date = document.getElementById('gamedate').value;
+    if(!date)
+    {
+        document.getElementById('errordate').innerHTML = "Data richiesta";
+        return false;
+    }
     return true;
 }
 
