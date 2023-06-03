@@ -2,7 +2,7 @@
 
 <footer>
 	<div class="footer-text">
-		<a href="">Termini di servizio</a>    
+		<a href="termsofservice.jsp">Termini di servizio</a>    
 		<p>© 2023 GamesClick. Tutti i diritti riservati</p>
 	</div>
 </footer>

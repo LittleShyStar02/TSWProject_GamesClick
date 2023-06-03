@@ -13,7 +13,7 @@
 				<a href="assistenza.jsp">Assistenza</a>
 			</li>
 			<li>
-				<a href="#">Informazioni</a>
+				<a href="informazioni.jsp">Informazioni</a>
 			</li>
 		</ul>
 		<%@ page import="it.project.bean.UserBean,it.project.model.UserModel" %>
