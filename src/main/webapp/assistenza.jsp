@@ -24,19 +24,19 @@
 		<br>
       		<form name="formAssistenza" method="post" onsubmit="doAlert()" class="form-w1 center">
 				<label for="email">Email</label>
-				<br>
+				<br><br>
 				<input type="text" name="email" size="64" placeholder="Email" required>
-				<br>
+				<br><br>
 				<label for="object">Oggetto</label>
-				<br>
+				<br><br>
 				<input type="text" name="object" size="64" placeholder="Oggetto" required>
-				<br>
+				<br><br>
 				<label for="note">Richiesta</label>
-				<br>
+				<br><br>
 				<textarea class="textarea-lock" name="note" placeholder="Inserisci il testo qui..." required></textarea>
-				<br>
+				<br><br>
 				<input type="submit" value="Invia Richiesta">
-				<br>
+				<br><br>
 			</form>
 		</fieldset>
 	</div>

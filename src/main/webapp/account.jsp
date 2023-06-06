@@ -7,31 +7,15 @@
 <head>
 	<%@include file="head.jsp" %>
     <style>
-        fieldset {
-        	display: none;
+        .showcont {
+        	display: contents;
         }
 
-        .show_cont {
-          color: white;
-          display: contents;
+        .hidecont {
+          display: none;
         }
 	</style>
-    <script>
-        function showcont(contToShow, contToHide, contToHide2) {
-        	contToShow = document.getElementById(contToShow);
-        	contToHide = document.getElementById(contToHide);
-        	contToHide2 = document.getElementById(contToHide2);
-          var userInput = fieldsetToShow.querySelector("input");
-          contToShow.classList.add("show_cont");
-          contToHide.classList.remove("show_cont");
-          contToHide2.classList.remove("show_cont");
-
-          setTimeout(function () {
-            userInput.focus();
-          }, 500);
-        }
-      </script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="assets/js/account.js"></script>
 </head>
 
 <body>
@@ -42,42 +26,53 @@
  	
  	<div class="first-container center">
  	
- 		<div class="user-div">
+ 		<%@include file="errorbox.jsp" %>
  		
-			<div class="sidebar">
-	  			<a class="active " onclick="showcont('account', 'metodi', 'ordini')" href="#home">Gestione account</a>
-	  			<a href="#news" onclick="showcont('metodi', 'account' ,'ordini')">Metodi di pagamento</a>
-	  			<a href="#contact" onclick="showcont('ordini', 'metodi', 'account')">Ordini</a>
+ 		<div class="account-user-div">
+ 		
+			<div class="account-sidebar">
+	  			<a href="#" class="active " onclick="visualize('profile')">Gestione account</a>
+	  			<a href="#" onclick="visualize('pmethod')">Metodi di pagamento</a>
+	  			<a href="#" onclick="visualize('orders')">Ordini</a>
 			</div>
 			
-			<div class="content center">
-				<fieldset id="account">
-					<form action="" >
-					<label for="nome">Nome:</label>
-					<br>
-					<label for="cognome">Cognome:</label>
-					<br>
-					<label for="data">Data di nascita:</label>
-					<br>
-					<label for="ind">Indirizzo:</label>
-					<br>
-					<label for="email">Email:</label>
-					<br>
-					<label for="pass">Password:</label>
-					</form>
-				</fieldset>
+			<div class="account-content">
 				
-				<fieldset id="metodi">
-					<form action="" >
-						<p>Prova</p>
-					</form>
-				</fieldset>	
+				<div id="profile" class="hidecont">
 				
-				<fieldset id="ordini">
-					<form action="" id="ordini">
-						<p>Prova1</p>
-					</form>
-				</fieldset>
+					<%@ page import="it.project.bean.UserBean,it.project.model.UserModel,it.project.Utility" %>
+					<%
+						String aemail = (String) request.getSession().getAttribute("userEmail");
+						UserBean userbean = new UserModel().doRetrieveByKey(email);
+						out.print("<form action=\"Account\" method=\"post\" class=\"center\" onsubmit=\"checkInfo()\">");
+						out.print("<label for=\"nome\">Nome: </label>");
+						out.print("<input type=\"text\" id=\"nome\" name=\"nome\" size=\"32\" placeholder=\"Nome\" value=\"" + userbean.getName() + "\" required autofocus readonly>");
+						out.print("<p id=\"errorname\" style=\"color:red\"></p>");
+						out.print("<br>");
+						out.print("<label for=\"cognome\">Cognome: </label>");
+						out.print("<input type=\"text\" id=\"cognome\" name=\"cognome\" size=\"32\" placeholder=\"Cognome\" value=\"" + userbean.getSurname() + "\" required autofocus readonly>");
+						out.print("<p id=\"errorsurname\" style=\"color:red\"></p>");
+						out.print("<br>");
+						out.print("<label for=\"data\">Data di nascita: </label>");
+						out.print("<input type=\"date\" id=\"data\" name=\"data\" value=\"" + Utility.dateToMysql(userbean.getBornDate()) + "\" required autofocus readonly>");
+						out.print("<br>");
+						out.print("<label for=\"indirizzo\">Indirizzo: </label>");
+						out.print("<input type=\"text\" id=\"indirizzo\" name=\"indirizzo\" size=\"32\" placeholder=\"Indirizzo, Civico\" value=\"" + userbean.getAddress() + "\" required autofocus readonly>");
+						out.print("<br>");
+						out.print("<input type=\"button\" value=\"Modifica\" size=\"16\" onclick=\"unlockFields()\">");
+						out.print("<input type=\"submit\" value=\"Salva\" size=\"16\">");
+						out.print("<br>");
+						out.print("</form>");
+					%>
+				</div>
+				
+				<div id="pmethod" class="hidecont">
+				
+				</div>
+				
+				<div id="orders" class="hidecont">
+				</div>
+				
 			</div>
 		
 		

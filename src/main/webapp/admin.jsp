@@ -78,7 +78,7 @@
 		
         <fieldset class="fieldset-form" style="right: 3%;width: 90%;border: none;padding: 2%">
           <legend style="font-size: 20px;color: pink;">Cosa vuoi aggiornare?</legend>
-          <form action="AdminPanel" method="post" id="firstForm">
+          <form action="AdminPanel" method="post" id="firstForm" class="adminManager">
           	<input type="text" id="firstToShow" name="firstToShow" style="display: none;">
           	<input type="text" id="secondToShow" name="secondToShow" style="display: none;">
           	<input type="text" id="dataType" name="dataType" style="display: none;">
@@ -105,7 +105,7 @@
           		<input type="text" id="action_form" name="action_form" style="display: none;">
           		<label for="search_datatype" id="label_datatype"></label>
           		<br>
-          		<input type="text" id="search_datatype" name="search_datatype" size=32 required>
+          		<input type="text" id="search_datatype" name="search_datatype" class="inb20" required>
           		<input type="submit" value="Trova" class="admin-binput">
           		<div id="catinfo" class="hidecont">
           			<%@page import="it.project.bean.CategoryBean,it.project.model.CategoryModel" %>
@@ -119,7 +119,7 @@
           					{
           						out.print("<p>Categoria inesistente. Creala</p>");
           						out.print("<br>");
-          						out.print("<textarea id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\"></textarea>");
+          						out.print("<textarea id=\"catdesc\" name=\"catdesc\" class=\"textarea-lock\" placeholder=\"Descrizione... (max 2000 caratteri)\"></textarea>");
           						out.print("<p id=\"errordesc\"></p>");
           						out.print("<br>");
           						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createCategory()\">");
@@ -149,7 +149,7 @@
           					if(conbean.getName() == null) 
           					{
           						out.print("<p>Console inesistente. Creala</p>");
-          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\"></textarea>");
+          						out.print("<textarea type=\"text\" id=\"condesc\" name=\"condesc\" class=\"textarea-lock\" placeholder=\"Descrizione... (max 2000 caratteri)\"></textarea>");
           						out.print("<p id=\"errordesc2\"></p>");
           						out.print("<br>");
           						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createConsole()\">");
@@ -178,19 +178,19 @@
         					if(gamebean.getName() == null)
         					{
         						out.print("<p>Gioco inesistente. Crealo</p>");
-        						out.print("<textarea type=\"text\" id=\"gamedesc\" name=\"gamedesc\" class=\"textarea-lock\" placeholder=\"Descrizione...\"></textarea>");
+        						out.print("<textarea type=\"text\" id=\"gamedesc\" name=\"gamedesc\" class=\"textarea-lock\" placeholder=\"Descrizione... (max 2000)\"></textarea>");
         						out.print("<p id=\"errordesc3\"></p>");
         						out.print("<br><br>");
-        						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" size=32 required>");
+        						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" required>");
         						out.print("<p id=\"errordate\"></p>");
         						out.print("<br><br>");
-        						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" size=32 placeholder=\"Prezzo...\" required>");
+        						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" placeholder=\"Prezzo...\" required>");
         						out.print("<br><br>");
-        						out.print("<input type=\"number\" id=\"minage\" name=\"minage\" size=32 placeholder=\"Età Minima...\" required>");
+        						out.print("<input type=\"number\" id=\"minage\" name=\"minage\" placeholder=\"Età Minima...\" required>");
         						out.print("<br><br>");
-        						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" size=32 placeholder=\"Game Image Url...\" required>");
+        						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" placeholder=\"Game Image Url...\" required>");
         						out.print("<br><br>");
-        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" required>");
+        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" placeholder=\"Email...\" required>");
         						out.print("<br><br>");
         						out.print("<input <type=\"text\" id=\"gameconsole\" name=\"gameconsole\" style=\"display: none\">");
         						out.print("<h3>Console</h3><br>");
@@ -226,7 +226,7 @@
         						}
         						
         						
-        						out.print("<br><br>");
+        						out.print("<br>");
         						out.print("<input type=\"button\" value=\"Crea\" class=\"admin-binput binputw\" onclick=\"createGame()\">");
         					}
         					else
@@ -234,16 +234,16 @@
         						out.print("<textarea type=\"text\" id=\"gamedesc\" name=\"gamedesc\" class=\"textarea-lock readonly\" placeholder=\"Descrizione...\">" + gamebean.getDescription() + "</textarea>");
         						out.print("<p id=\"errordesc3\"></p>");
         						out.print("<br><br>");
-        						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" class=\"readonly\" size=32 value=\"" + Utility.dateToMysql(gamebean.getReleaseDate()) + "\" required readonly>");
+        						out.print("Data rilascio: <input type=\"date\" id=\"gamedate\" name=\"gamedate\" class=\"readonly\" value=\"" + Utility.dateToMysql(gamebean.getReleaseDate()) + "\" required readonly>");
         						out.print("<p id=\"errordate\"></p>");
         						out.print("<br><br>");
-        						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" size=32 placeholder=\"Prezzo...\" class=\"readonly\" value=\"" + gamebean.getPrice() + "\" required readonly>");
+        						out.print("<input type=\"number\" id=\"gameprice\" name=\"gameprice\" placeholder=\"Prezzo...\" class=\"readonly\" value=\"" + gamebean.getPrice() + "\" required readonly>");
         						out.print("<br><br>");
-        						out.print("<input type=\"number\" id=\"minage\" name=\"minage\" size=32 placeholder=\"Età Minima...\" class=\"readonly\" value=\"" + gamebean.getMinAge() + "\" required readonly>");
+        						out.print("<input type=\"number\" id=\"minage\" name=\"minage\" placeholder=\"Età Minima...\" class=\"readonly\" value=\"" + gamebean.getMinAge() + "\" required readonly>");
         						out.print("<br><br>");
-        						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" size=32 placeholder=\"Game Image Url...\" class=\"readonly\" value=\"" + gamebean.getPreview() + "\" required readonly>");
+        						out.print("<input type=\"text\" id=\"gameurl\" name=\"gameurl\" placeholder=\"Game Image Url...\" class=\"readonly\" value=\"" + gamebean.getPreview() + "\" required readonly>");
         						out.print("<br><br>");
-        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" size=32 placeholder=\"Email...\" class=\"readonly\" value=\"" + new UserModel().adminMailByKey(gamebean.getAdminKey()) + "\" required readonly>");
+        						out.print("<input type=\"email\" id=\"gameadmin\" name=\"gameadmin\" placeholder=\"Email...\" class=\"readonly\" value=\"" + new UserModel().adminMailByKey(gamebean.getAdminKey()) + "\" required readonly>");
         						out.print("<br><br>");
         						
         						out.print("<input <type=\"text\" id=\"gameconsole\" name=\"gameconsole\" style=\"display: none\">");
@@ -295,6 +295,7 @@
         							}
         						}
         						
+        						out.print("<br>");
         						out.print("<input type=\"button\" value=\"Clicca per modificare\" class=\"admin-binput binputw\" onclick=\"unlockGame()\">");
           						out.print("<input type=\"button\" value=\"Salva\" class=\"admin-binput binputw\" onclick=\"modifyGame()\">");
           						out.print("<input type=\"button\" value=\"Elimina\" class=\"admin-binput binputw\" onclick=\"deleteGame()\">");
@@ -341,8 +342,8 @@
           		<br>
           		<input type="email" id="adminEmail" name="adminEmail" size=32 placeholder="Email" required>
           		<br><br>
-          		<input type="submit" value="Rendi amministratore" onclick="setAction('adminAction','adminForm','add')">
-          		<input type="submit" value="Rendi utente" onclick="setAction('adminAction','adminForm','remove')">
+          		<input type="submit" class="admin-binput" value="Rendi amministratore" onclick="setAction('adminAction','adminForm','add')">
+          		<input type="submit" class="admin-binput" value="Rendi utente" onclick="setAction('adminAction','adminForm','remove')">
           	</form>
           </fieldset>
         </div>

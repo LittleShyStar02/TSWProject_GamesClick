@@ -18,19 +18,20 @@
 		<fieldset class="fieldset-form">
 			<legend>Login</legend>
 			<br>
-			<form action="ALogin" method="post" class="form-w1 center">
+			<form action="ALogin" method="post" class="form-w1">
 				<label for="email">Email</label>
-				<br>
-				<input type="email" id="email" name="email" size="64" placeholder="Email" required autofocus>
-				<br>
+				<br><br>
+				<input type="email" id="email" name="email" placeholder="Email" required autofocus>
+				<br><br>
 				<label for="password">Password</label>
-				<br>
-				<input type="password" id="password" name="password" size="64" placeholder="Password" required autofocus>
-				<br>
+				<br><br>
+				<input type="password" id="password" name="password" placeholder="Password" required autofocus>
+				<br><br>
 				<input type="submit" value="Accedi">
 				<br>
 			</form>
 			<div>
+				<br>
 				<a href="registrazione.jsp" class="form-a">Non hai ancora un account? Registrati</a>
 			</div>
 			<br>

@@ -89,25 +89,22 @@ footer,
  *  STYLE SCROLL BAR
  */
 
- ::-webkit-scrollbar-track
- {
-     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-     border-radius: 10px;
-     background-color: #F5F5F5;
- }
- 
- ::-webkit-scrollbar
- {
-     width: 12px;
-     background-color: #F5F5F5;
- }
- 
- ::-webkit-scrollbar-thumb
- {
-     border-radius: 10px;
-     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-     background-color: #555;
- }
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
 
 /*
   HEADER STYLE
@@ -281,9 +278,26 @@ footer div a {
     text-decoration: none;
 }
 
-.form-w1 input {
+.form-w1 {
     display: block;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-w1 input[type=email],
+.form-w1 input[type=password],
+.form-w1 input[type=text] {
     padding: 10px;
+    width: 50%;
+}
+
+.form-w1 input[type=button],
+.form-w1 input[type=submit],
+.form-w1 input[type=date] {
+    padding: 10px;
+    width: 20%;
 }
 
 /*
@@ -300,6 +314,14 @@ footer div a {
 /* 
   ADMIN STYLE 
 */
+
+.adminManager {
+    display: block;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
 
 .admin-ul {
     align-items: center;
@@ -333,12 +355,23 @@ footer div a {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-.adminManager input{
-    padding: 1%;
+.adminManager input[type=email],
+.adminManager input[type=password],
+.adminManager input[type=text],
+.adminManager input[type=date],
+.adminManager input[type=number] {
+    padding: 10px;
 }
 
-.binputw {
-    width: 25%;
+.adminManager input[type=email],
+.adminManager input[type=password],
+.adminManager input[type=text] {
+    width: 50%;
+}
+
+.adminManager input[type=date],
+.adminManager input[type=number] {
+    width: 30%;
 }
 
 /* 
@@ -353,8 +386,8 @@ footer div a {
 /*
   ACCOUNT STYLE
 */
-.user-div {
-    background-color:#295180;
+.account-user-div {
+    background-color: #295180;
     position: absolute;
     top: 20%;
     display: flex;
@@ -364,7 +397,7 @@ footer div a {
     border-style: double;
 }
 
-.sidebar {
+.account-sidebar {
     float: left;
     display: block;
     padding: 0;
@@ -375,53 +408,76 @@ footer div a {
     overflow: hidden;
 }
 
-/* Sidebar links */
-.sidebar a {
+.account-sidebar a {
     display: block;
     color: black;
     padding: 16px;
     text-decoration: none;
 }
 
-/* Active/current link */
-.sidebar a.active {
+.account-sidebar a:active {
     background-color: #295180;
     color: white;
 }
 
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
+.account-sidebar a:hover:not(a:active) {
     background-color: #555;
     color: white;
 }
 
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-div.content {
+div::content {
     width: 100%;
     background-color: transparent;
     opacity: 1;
     height: auto;
+    margin-left: 2%;
 }
 
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
-    .sidebar {
+
+    .form-w1 input[type=button],
+    .form-w1 input[type=submit],
+    .form-w1 input[type=date] {
+        padding: 10px;
+        width: 50%;
+    }
+
+    /*
+      ACCOUNT STYLE
+    */
+    .account-sidebar {
         width: 100%;
         height: auto;
         position: relative;
     }
 
-    .sidebar a {
+    .account-sidebar a {
         float: left;
     }
 
-    div.content {
-        margin-left: 0;
+    /*
+      ADMIN STYLE
+    */
+    .admin-ul {
+        display: flex;
+        flex-direction: column;
     }
+
+    .adminManager input[type=date] {
+        padding: 10px;
+        width: 20%;
+    }
+
+    .adminManager input[type=button],
+    .adminManager input[type=submit] {
+        display: inline-block;
+        width: 100%;
+    }
+
 }
 
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
 @media screen and (max-width: 400px) {
     .sidebar a {
         text-align: center;

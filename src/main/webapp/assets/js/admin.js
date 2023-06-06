@@ -150,6 +150,11 @@ function checkCatDesc() {
         document.getElementById('errordesc').innerHTML = "Descrizione richiesta";
         return false;
     }
+    else if(text.length > 2000)
+    {
+        document.getElementById('errordesc').innerHTML = "La descrizione conta più di 2000 caratteri";
+        return false;
+    }
     else {
         return true;
     }
@@ -185,6 +190,11 @@ function checkConDesc() {
     var text = document.getElementById('condesc').value;
     if (text == '' || text == null) {
         document.getElementById('errordesc2').innerHTML = "Descrizione richiesta";
+        return false;
+    }
+    else if(text.length > 2000)
+    {
+        document.getElementById('errordesc2').innerHTML = "La descrizione conta più di 2000 caratteri";
         return false;
     }
     else {
@@ -245,6 +255,11 @@ function checkGameValue() {
     var text = document.getElementById('gamedesc').value;
     if (text == '' || text == null) {
         document.getElementById('errordesc3').innerHTML = "Descrizione richiesta";
+        return false;
+    }
+    if(text.length > 2000)
+    {
+        document.getElementById('errordesc3').innerHTML = "La descrizione conta più di 2000 caratteri";
         return false;
     }
     var date = document.getElementById('gamedate').value;

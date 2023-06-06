@@ -21,38 +21,38 @@
 			<br>
 			<form action="ARegistrazione" method="post" class="form-w1 center" onsubmit="return validateReg()">
 				<label for="nome">Nome</label>
-				<br>
-				<input type="text" id="nome" name="nome" size="32" placeholder="Nome" required autofocus>
+				<br><br>
+				<input type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
 				<p id="errorname" style="color:red"></p>
-				<br>
+				<br><br>
 				<label for="cognome">Cognome</label>
-				<br>
-				<input type="text" id="cognome" name="cognome" size="32" placeholder="Cognome" required autofocus>
+				<br><br>
+				<input type="text" id="cognome" name="cognome" placeholder="Cognome" required autofocus>
 				<p id="errorsurname" style="color:red"></p>
-				<br>
+				<br><br>
 				<label for="email">Email</label>
-				<br>
-				<input type="email" id="email" name="email" size="64" placeholder="Email" required autofocus>
-				<br>
+				<br><br>
+				<input type="email" id="email" name="email" placeholder="Email" required autofocus>
+				<br><br>
 				<label for="password">Password</label>
-				<br>
-				<input type="password" id="password" name="password" size="64" placeholder="Password" required autofocus>
-				<br>
+				<br><br>
+				<input type="password" id="password" name="password" placeholder="Password" required autofocus>
+				<br><br>
 				<label for="password2">Conferma password:</label>
-				<br>
-				<input type="password" id="password2" name="password2" size="64" placeholder="Conferma Password" required autofocus>
+				<br><br>
+				<input type="password" id="password2" name="password2" placeholder="Conferma Password" required autofocus>
 				<p id="password2error" style="color:red"></p>
-				<br>
+				<br><br>
 				<label for="data">Data di nascita:</label>
-				<br>
+				<br><br>
 				<input type="date" id="data" name="data" required autofocus>
-				<br>
+				<br><br>
 				<label for="indirizzo">Indirizzo:</label>
-				<br>
-				<input type="text" id="indirizzo" name="indirizzo" size="64" placeholder="Indirizzo, Civico" required autofocus>
-				<br>
-				<input type="submit" value="Registrati" size="32">
-				<br>
+				<br><br>
+				<input type="text" id="indirizzo" name="indirizzo"placeholder="Indirizzo, Civico" required autofocus>
+				<br><br>
+				<input type="submit" value="Registrati">
+				<br><br>
         	</form>
         </fieldset>
     </div>
