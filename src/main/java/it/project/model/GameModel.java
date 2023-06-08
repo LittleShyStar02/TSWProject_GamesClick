@@ -89,7 +89,7 @@ public class GameModel implements EntityBeanModel<GameBean>
 		{
 			conn = ConnectionPool.getConnection();
 			ps = conn.prepareStatement("SELECT * FROM Gioco ORDER BY Nome " + order);
-			games = new LinkedList<GameBean>();
+			games = new LinkedList<>();
 			ResultSet set = ps.executeQuery();
 			GameBean game;
 			while(set.next())

@@ -20,7 +20,8 @@ public class UserModel implements EntityBeanModel<UserBean>
 	public synchronized boolean doDelete(UserBean entity) throws SQLException 
 	{
 		Connection conn = null;
-		PreparedStatement ps = null,ps2 = null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2 = null;
 		int result = 0;
 		
 		try {
@@ -74,7 +75,8 @@ public class UserModel implements EntityBeanModel<UserBean>
 	public synchronized UserBean doRetrieveByKey(String email) throws SQLException 
 	{
 		Connection conn = null;
-		PreparedStatement ps = null, ps2= null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2= null;
 		UserBean user = new UserBean();
 
 		try {
@@ -147,12 +149,13 @@ public class UserModel implements EntityBeanModel<UserBean>
 	public synchronized Collection<UserBean> doRetrieveAll(String order) throws SQLException 
 	{
 		Connection conn = null;
-		PreparedStatement ps = null,ps2=null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2=null;
 		Collection<UserBean> users;
 		UserBean user;
 		try
 		{
-			users = new LinkedList<UserBean>();
+			users = new LinkedList<>();
 			conn = ConnectionPool.getConnection();
 			ps = conn.prepareStatement("SELECT * FROM Utente ORDER BY Nome,Congome,Email " + order);
 			ResultSet set = ps.executeQuery();

@@ -29,10 +29,10 @@
 			}
 		%>
 		<div class="header-icon">
-			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image"></a>
+			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image" alt="Immagine non trovata"></a>
 		</div>
 		<div class="account-dropdown header-icon">
-			<a href="#" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image"></a>
+			<a href="#" class="header-image-text"><img src="assets/images/icon_account.png" class="header-image" alt="Immagine non trovata"></a>
 			<div class="account-dropdown-content">
 				<ul>
 					<%

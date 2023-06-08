@@ -11,7 +11,9 @@ import it.project.storage.ConnectionPool;
 public class EsecuzioneGiocoModel 
 {
 	
-	public synchronized static boolean doDeleteByConsole(ConsoleBean entity) throws SQLException 
+	private EsecuzioneGiocoModel() {}
+	
+	public static synchronized boolean doDeleteByConsole(ConsoleBean entity) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -35,7 +37,7 @@ public class EsecuzioneGiocoModel
 		return (result != 0);
 	}
 	
-	public synchronized static boolean doDeleteByGame(GameBean entity) throws SQLException 
+	public static synchronized boolean doDeleteByGame(GameBean entity) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -59,7 +61,7 @@ public class EsecuzioneGiocoModel
 		return (result != 0);
 	}
 	
-	public synchronized static boolean doSave(String console_key,String game_key) throws SQLException
+	public static synchronized boolean doSave(String console_key,String game_key) throws SQLException
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -90,7 +92,7 @@ public class EsecuzioneGiocoModel
 		return ok;
 	}
 	
-	public synchronized static boolean exists(String con,String game) throws SQLException 
+	public static synchronized boolean exists(String con,String game) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;

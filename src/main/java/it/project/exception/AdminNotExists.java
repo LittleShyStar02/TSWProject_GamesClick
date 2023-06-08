@@ -6,7 +6,7 @@ public class AdminNotExists extends IOException
 {
 
 	private static final long serialVersionUID = 1L;
-	private String message;
+	private final String message;
 	
 	public AdminNotExists() {
 		message = "L'utente non è un amministratore";
@@ -16,6 +16,7 @@ public class AdminNotExists extends IOException
 		this.message = message;
 	}
 	
+	@Override
 	public String getMessage()
 	{
 		return message;

@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.Iterator;
 import java.sql.Date;
 
@@ -37,9 +36,14 @@ public class AdminPanel extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String first=null,second=null,type=null,datasearch=null,action=null;
+		String first = null;
+		String second = null;
+		String type = null;
+		String datasearch = null;
+		String action = null;
 		String message = null;
 		
 		try
@@ -76,10 +80,12 @@ public class AdminPanel extends HttpServlet {
 					case "delete_game":
 						if(saveGame(request,"delete")) message = "Gioco eliminato con successo";
 						break;
+					default:
+						break;
 				}
 			}
 		}
-		catch(SQLException | ParseException | AdminNotExists e)
+		catch(SQLException | AdminNotExists e)
 		{
 			message = e.getMessage();
 		}
@@ -121,6 +127,7 @@ public class AdminPanel extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
@@ -143,6 +150,8 @@ public class AdminPanel extends HttpServlet {
 				return model.doUpdate(bean);
 			case "delete":
 				return model.doDelete(bean);
+			default:
+				break;
 		}
 		
 		return false;
@@ -166,12 +175,14 @@ public class AdminPanel extends HttpServlet {
 				return model.doUpdate(bean);
 			case "delete":
 				return model.doDelete(bean);
+			default:
+				break;
 		}
 		
 		return false;
 	}
 	
-	public boolean saveGame(HttpServletRequest request,String atype) throws SQLException, ParseException, AdminNotExists
+	public boolean saveGame(HttpServletRequest request,String atype) throws SQLException, AdminNotExists
 	{
 		String name = request.getParameter("search_datatype");
 		String desc = request.getParameter("gamedesc");
@@ -222,6 +233,8 @@ public class AdminPanel extends HttpServlet {
 				return check;
 			case "delete":
 				return model.doDelete(bean);
+			default:
+				break;
 		}
 		
 		return false;

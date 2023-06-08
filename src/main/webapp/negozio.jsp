@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="it">
 
 <head>
 	<%@include file="head.jsp" %>
@@ -17,7 +17,6 @@
 				<label for="search">Cerca un gioco: </label>
 				<input type="text" id="search" name="search" placeholder="Inserisci il nome del gioco">
 				<input type="submit" value="Cerca">
-				<!-- <div class="form-error"></div> -->
 			</form>
 		</div>
 	</div>

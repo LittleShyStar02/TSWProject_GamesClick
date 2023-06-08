@@ -4,8 +4,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Utility 
+public class Utility
 {
+	
+	private Utility() {}
 	
 	public static String dateToString(Date date)
 	{

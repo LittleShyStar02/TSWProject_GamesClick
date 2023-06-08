@@ -2,7 +2,7 @@
 
   <!DOCTYPE html>
 
-  <html>
+  <html lang="it">
 
   <head>
     <%@include file="head.jsp" %>

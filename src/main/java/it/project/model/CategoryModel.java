@@ -81,7 +81,7 @@ public class CategoryModel implements EntityBeanModel<CategoryBean>
 		{
 			conn = ConnectionPool.getConnection();
 			ps = conn.prepareStatement("SELECT * FROM Categoria ORDER BY Nome " + order);
-			cats = new LinkedList<CategoryBean>();
+			cats = new LinkedList<>();
 			ResultSet set = ps.executeQuery();
 			CategoryBean cat;
 			while(set.next())

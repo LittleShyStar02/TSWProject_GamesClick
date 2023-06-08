@@ -11,8 +11,10 @@ public class ConnectionPool
 	
 	private static List<Connection> freeDbConnections;
 
+	private ConnectionPool() {}
+	
 	static {
-		freeDbConnections = new LinkedList<Connection>();
+		freeDbConnections = new LinkedList<>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -39,7 +41,7 @@ public class ConnectionPool
 		Connection connection;
 
 		if (!freeDbConnections.isEmpty()) {
-			connection = (Connection) freeDbConnections.get(0);
+			connection = freeDbConnections.get(0);
 			freeDbConnections.remove(0);
 
 			try {
@@ -56,7 +58,7 @@ public class ConnectionPool
 		return connection;
 	}
 
-	public static synchronized void releaseConnection(Connection connection) throws SQLException {
+	public static synchronized void releaseConnection(Connection connection) {
 		if(connection != null) freeDbConnections.add(connection);
 	}
 

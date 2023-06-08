@@ -2,9 +2,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="it">
 
-<head>
+<head lang="it">
 	<%@include file="head.jsp" %>
     <style>
         .showcont {
