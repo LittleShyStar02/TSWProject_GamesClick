@@ -263,12 +263,13 @@ footer div a {
 */
 
 .fieldset-form {
+    border: none;
     display: block;
     width: 50%;
 }
 
 .fieldset-form legend {
-    color: red;
+    color: lime;
     font-size: 42px;
     font-weight: bold;
 }

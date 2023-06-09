@@ -17,6 +17,8 @@
         }
 	</style>
     <script src="assets/js/admin.js"></script>
+    <script src="assets/js/ajax/jquery-3.7.0.min.js"></script>
+    <script src="assets/js/ajax/autocomplete.js"></script>
   </head>
 
   <%@page import="it.project.model.EsecuzioneGiocoModel,it.project.model.CategoriaGiocoModel" %>
@@ -107,6 +109,8 @@
           		<br>
           		<input type="text" id="search_datatype" name="search_datatype" class="inb20" required>
           		<input type="submit" value="Trova" class="admin-binput">
+          		<div id="autocomplete-div" class="hidecont"></div>
+          		<p id="prova"></p>
           		<div id="catinfo" class="hidecont">
           			<%@page import="it.project.bean.CategoryBean,it.project.model.CategoryModel" %>
         			<%

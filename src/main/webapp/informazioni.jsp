@@ -15,10 +15,10 @@
 
 	<div class="first-container center">
 
-		<div style="overflow: hidden;overflow-y: scroll;padding-top: 2%;padding-bottom: 2%;width: 98%">
+		<div style="padding-top: 2%;padding-bottom: 2%;width: 98%">
 			<h1 class="text-hx">Informazioni</h1>
 		
-		 	<ul>
+		 	<ul style="list-style-type: none">
          		<li>
             		<h2 class="text-hx">Chi siamo</h2>
                 	<p>
@@ -162,7 +162,7 @@
                     	diversi metodi di pagamento su Game Clicks. Puoi scegliere tra i seguenti:
 					</p>
 
-                	<ul>
+                	<ul style="list-style-type: none">
                 		<li>
                 			<br>
                     		<h4 class="text-hx">Carte di credito:</h4>

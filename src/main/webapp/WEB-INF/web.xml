@@ -128,4 +128,14 @@
     <servlet-name>AdminManager</servlet-name>
     <url-pattern>/AdminManager</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxAutoComplete</display-name>
+    <servlet-name>AjaxAutoComplete</servlet-name>
+    <servlet-class>it.project.ajax.AjaxAutoComplete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxAutoComplete</servlet-name>
+    <url-pattern>/AjaxAutoComplete</url-pattern>
+  </servlet-mapping>
 </web-app>
