@@ -157,7 +157,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 		{
 			users = new LinkedList<>();
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Utente ORDER BY Nome,Congome,Email " + order);
+			ps = conn.prepareStatement("SELECT * FROM Utente ORDER BY Nome,Cognome,Email " + order);
 			ResultSet set = ps.executeQuery();
 
 			while (set.next()) 

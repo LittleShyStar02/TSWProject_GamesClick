@@ -99,7 +99,7 @@
           <br>
           <fieldset class="fieldset-form" style="padding: 2%;border: none">
           	<legend id="search_type_text" style="font-size: 20px;color: pink;"></legend>
-          	<form action="AdminPanel" method="post" id="secondForm" class="adminManager" onsubmit="setParameter('secondForm','searchthing',getFromType(),getInputDataType());">
+          	<form action="AdminPanel" method="post" id="secondForm" class="adminManager" autocomplete="off" onsubmit="setParameter('secondForm','searchthing',getFromType(),getInputDataType());">
           		<input type="text" id="firstToShow2" name="firstToShow" style="display: none;">
           		<input type="text" id="secondToShow2" name="secondToShow" style="display: none;">
           		<input type="text" id="dataType2" name="dataType" style="display: none;">
@@ -109,8 +109,9 @@
           		<br>
           		<input type="text" id="search_datatype" name="search_datatype" class="inb20" required>
           		<input type="submit" value="Trova" class="admin-binput">
-          		<div id="autocomplete-div" class="hidecont"></div>
-          		<p id="prova"></p>
+          		<div id="autocomplete-div" class="autocomplete-div">
+          			
+          		</div>
           		<div id="catinfo" class="hidecont">
           			<%@page import="it.project.bean.CategoryBean,it.project.model.CategoryModel" %>
         			<%

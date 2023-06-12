@@ -1,3 +1,10 @@
+
+function setValue(text)
+{
+    document.getElementById('search_datatype').value = text;
+    document.getElementById('autocomplete-div').classList.remove("showcont");
+}
+
 $(document).ready(function () {
 
     $('#search_datatype').keypress(function (event) {
@@ -10,21 +17,13 @@ $(document).ready(function () {
         $.post('AjaxAutoComplete?type='+type+'&start='+text, { "button-id": bid },
             function (resp) {
                 var json = JSON.parse(resp);
-                var element = $("#autocomplete-div")
+                var element = $("#autocomplete-div");
                 element.addClass('showcont');
                 element.html('');
                 if(type == 'category' || type == 'console' || type == 'game')
                 {
                     $.each(json, function(x, data) {
-                        element.html(element.html() + "<p id=\"autocomplete-text\">"+data.name+"</p>");
-                    });
-                }
-
-                if(type == 'user')
-                {
-                    $.each(json, function(x, user){
-                        element.html(element.html() + "<p id=\"autocomplete-text\">"+user.name+"/"+user-surname+"/"+user.email+"</p>");
-
+                        if(x < 7) element.html(element.html() + "<input type=\"button\" class=\"autocomplete-text\" value=\""+data.name+"\" onclick=\"setValue('"+data.name+"')\">");
                     });
                 }
                 

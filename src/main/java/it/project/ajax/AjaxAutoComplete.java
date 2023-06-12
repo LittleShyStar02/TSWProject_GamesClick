@@ -89,24 +89,6 @@ public class AjaxAutoComplete extends HttpServlet {
     				response.getWriter().write(new Gson().toJson(coll));
     			}
     		}
-    		
-			if(type.equals("user"))
-			{
-				Collection<UserBean> coll = new UserModel().doRetrieveAll("ASC");
-				Collection<UserBean> coll2;
-				
-				if(start != null && !start.equals(""))
-				{
-					coll2 = coll.stream().filter(cat -> cat.getName().toLowerCase().startsWith(start.toLowerCase()) 
-							|| cat.getSurname().toLowerCase().startsWith(start.toLowerCase()) 
-							|| cat.getEmail().toLowerCase().startsWith(start.toLowerCase())).toList();
-					response.getWriter().write(new Gson().toJson(coll2));
-				}
-				else
-				{
-					response.getWriter().write(new Gson().toJson(coll));
-				}
-			}
 			
 		} catch (SQLException e) {
 			request.getSession().setAttribute("userMessage", e.getMessage());

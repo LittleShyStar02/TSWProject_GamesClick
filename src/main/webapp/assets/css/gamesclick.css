@@ -107,6 +107,24 @@ footer,
 }
 
 /*
+  STYLE AJAX AUTOCOMPLETE
+*/
+
+.autocomplete-text {
+    position: relative;
+    border: 1px solid #d4d4d4;
+    height: 25px;
+    width: 53%;
+    text-align: center;
+    right: 5.8%;
+}
+
+.autocomplete-text:hover {
+
+    background-color: #b0b0b0;
+}
+
+/*
   HEADER STYLE
 */
 
