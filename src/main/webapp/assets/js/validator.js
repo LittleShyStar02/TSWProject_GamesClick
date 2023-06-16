@@ -28,7 +28,7 @@ function validateReg()
         return false;
     }
 
-    let exp3 = new RegExp("\d");
+    let exp3 = new RegExp("[0-9]");
     if(!exp3.test(pass))
     {
         text.innerHTML = "La password deve contenere almeno un numero";

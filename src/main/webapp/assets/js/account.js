@@ -11,9 +11,7 @@ function show(id)
 function visualize(id)
 {
     if(id == '' || id == null) return;
-    hide('profile');
-    hide('pmethod');
-    hide('orders');
+    hide('userprofile');
 
     show(id);
 }
