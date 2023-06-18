@@ -12,6 +12,8 @@ function visualize(id)
 {
     if(id == '' || id == null) return;
     hide('userprofile');
+    hide('payments');
+    hide('orders');
 
     show(id);
 }
