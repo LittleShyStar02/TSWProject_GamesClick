@@ -29,6 +29,8 @@
  	
  		<%@include file="errorbox.jsp" %>
  		
+ 		<br><br>
+ 		
  		<ul class="admin-ul" style="list-style-type: none;">
  			<li><button class="account-button" onclick="visualize('userprofile')">Profilo</button></li>
  			<li><button class="account-button" onclick="visualize('payments')">Metodi di pagamento</button></li>
@@ -67,16 +69,16 @@
  			<fieldset class="fieldset-form" style="border: none;">
  			
  				<legend style="color: orange;font-size: 18px;">Aggiungi Metodo di Pagamento</legend>
- 				<form>
- 					
- 					<label for="payname"></label>
- 					<input type="text" id="payname" name="payname">
- 					<label for="payinfo"></label>
- 					<input type="text" id="payinfo" name="payinfo">
+ 				<br>
+ 				<form action="AAccount" method="post" class="form-w1">
+ 					<label for="payname">Nome metodo</label><br><br>
+ 					<input type="text" id="payname" name="payname" placeholder="Nome metodo" required><br><br>
+ 					<label for="payinfo">Codice, IBAN, Email ...</label><br><br>
+ 					<input type="text" id="payinfo" name="payinfo" placeholder="Codice, Iban, Email ..." required><br><br>
  					<%
- 						out.print("<input type=\"text\" id=\"payname\" name=\"payname\" value=\"" + uemail +"\">");
+ 						out.print("<input type=\"text\" id=\"paymail\" name=\"paymail\" value=\"" + uemail +"\" style=\"display: none;\">");
  					%>
- 					
+ 					<input type="submit" value="Aggiungi">
  				</form>
  			
  			</fieldset>

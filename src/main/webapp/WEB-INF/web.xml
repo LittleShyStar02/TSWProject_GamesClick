@@ -138,4 +138,14 @@
     <servlet-name>AjaxAutoComplete</servlet-name>
     <url-pattern>/AjaxAutoComplete</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AAccount</display-name>
+    <servlet-name>AAccount</servlet-name>
+    <servlet-class>it.project.servlet.actions.AAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AAccount</servlet-name>
+    <url-pattern>/AAccount</url-pattern>
+  </servlet-mapping>
 </web-app>

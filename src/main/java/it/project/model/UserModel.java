@@ -276,6 +276,36 @@ public class UserModel implements EntityBeanModel<UserBean>
 		return key;
 	}
 	
+	public String doRetrieveEmailById(int id) throws SQLException {
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String email = null;
+		
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM Utente WHERE IDUtente = ?");
+			ps.setInt(1, id);
+
+			ResultSet set = ps.executeQuery();
+
+			while (set.next()) 
+			{
+				email = set.getString("Email");
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		
+		return email;
+	}
+	
 	public int doRetrieveAdminKey(String email) throws SQLException {
 		int key = -1;
 		
