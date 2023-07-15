@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import it.project.bean.CategoryBean;
 import it.project.bean.GameBean;
 import it.project.storage.ConnectionPool;
@@ -59,6 +62,40 @@ public class CategoriaGiocoModel
 			}
 		}
 		return (result != 0);
+	}
+	
+	public static synchronized Collection<CategoryBean> doRetrieveByGame(String name) throws SQLException
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		Collection<CategoryBean> coll = new ArrayList<>();
+
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT Categoria.Nome,Categoria.Descrizione FROM Categoria,Gioco,CategoriaGioco WHERE Gioco.IDGioco = CategoriaGioco.IDGioco AND Categoria.IDCategoria = CategoriaGioco.IDCategoria AND Gioco.Nome = ?");
+			ps.setString(1, name);
+
+			ResultSet set = ps.executeQuery();
+			
+			CategoryBean cat;
+			
+			while (set.next()) 
+			{
+				cat = new CategoryBean();
+				cat.setName(set.getString("Categoria.Nome"));
+				cat.setDescription(set.getString("Categoria.Descrizione"));
+				coll.add(cat);
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return coll;
 	}
 	
 	public static synchronized boolean doSave(String category_key,String game_key) throws SQLException

@@ -428,8 +428,35 @@ footer div a {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
+/*
+  GAME
+*/
+
+.gamesec{
+    padding: 5%;
+}
+
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
+
+    /*
+        game
+    */
+    .gamesec {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .gameimg{
+        display: block;
+        height:60%;
+        width: 90%;
+    }
+
+    /*gg*/
 
     .form-w1 input[type=button],
     .form-w1 input[type=submit],

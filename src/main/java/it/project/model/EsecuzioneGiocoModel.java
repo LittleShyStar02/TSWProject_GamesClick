@@ -1,9 +1,12 @@
 package it.project.model;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+
 import it.project.bean.ConsoleBean;
 import it.project.bean.GameBean;
 import it.project.storage.ConnectionPool;
@@ -59,6 +62,40 @@ public class EsecuzioneGiocoModel
 			}
 		}
 		return (result != 0);
+	}
+	
+	public static synchronized Collection<ConsoleBean> doRetrieveByGame(String name) throws SQLException
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		Collection<ConsoleBean> coll = new ArrayList<>();
+
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT Console.Nome,Console.Descrizione FROM Console,Gioco,EsecuzioneGioco WHERE Gioco.IDGioco = EsecuzioneGioco.IDGioco AND Console.IDConsole = EsecuzioneGioco.IDConsole AND Gioco.Nome = ?");
+			ps.setString(1, name);
+
+			ResultSet set = ps.executeQuery();
+			
+			ConsoleBean console;
+			
+			while (set.next()) 
+			{
+				console = new ConsoleBean();
+				console.setName(set.getString("Console.Nome"));
+				console.setDescription(set.getString("Console.Descrizione"));
+				coll.add(console);
+			}
+
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return coll;
 	}
 	
 	public static synchronized boolean doSave(String console_key,String game_key) throws SQLException

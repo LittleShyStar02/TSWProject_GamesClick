@@ -53,7 +53,6 @@ public class ConsoleModel implements EntityBeanModel<ConsoleBean>
 			ps.setString(1, name);
 
 			ResultSet set = ps.executeQuery();
-
 			while (set.next()) 
 			{
 				console.setName(set.getString("Nome"));

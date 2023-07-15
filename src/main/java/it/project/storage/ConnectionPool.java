@@ -59,7 +59,14 @@ public class ConnectionPool
 	}
 
 	public static synchronized void releaseConnection(Connection connection) {
-		if(connection != null) freeDbConnections.add(connection);
+		try
+		{
+			if(connection != null) connection.close();
+			freeDbConnections.add(ConnectionPool.getConnection());
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }
