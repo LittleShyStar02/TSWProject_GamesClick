@@ -406,15 +406,18 @@ footer div a {
 */
 .shop-bar {
     position: relative;
-    left: 5%;
+    padding: 3%;
     top: 25%;
 }
 
 .gameszone {
     list-style-type: none;
-    left: 5%;
+    padding-left: 3%;
     position: relative;
     width: 90%;
+    border: white 1px solid;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .gameszone .gameinfo {
