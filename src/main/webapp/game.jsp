@@ -76,7 +76,7 @@
  			<%
  				if(request.getSession().getAttribute("userEmail") != null)
  				{
- 					//code
+ 					
  				}
  			%>
  			

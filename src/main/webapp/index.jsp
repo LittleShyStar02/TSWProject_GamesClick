@@ -15,6 +15,11 @@
  		
  		<%@include file="errorbox.jsp" %>
  		
+ 		<img class="homeimg" src="assets/images/logo1.png">
+        <br>
+        <br>
+        <img class="homeimg"src="assets/images/logo2.png">
+ 		
  	</div>
  	
  	<%@include file="footer.jsp" %>

@@ -330,6 +330,14 @@ footer div a {
     width: 80%;
 }
 
+
+/*
+    HOME PAGE
+*/
+.homeimg {
+    width: 40%;
+}
+
 /* 
   ADMIN STYLE 
 */
@@ -397,9 +405,37 @@ footer div a {
   NEGOZIO STYLE
 */
 .shop-bar {
-    position: absolute;
+    position: relative;
     left: 5%;
     top: 25%;
+}
+
+.gameszone {
+    list-style-type: none;
+    left: 5%;
+    position: relative;
+    width: 90%;
+}
+
+.gameszone .gameinfo {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.gameszone .gameinfo img {
+    width: 10%;
+    padding-right: 3%;
+    height: 100%;
+}
+
+.gameszone .gameinfo aside {
+    width: 70%;
+}
+
+.gameszone .gameinfo button {
+    width: 8%;
+    height: 40px;
 }
 
 /*
@@ -439,6 +475,10 @@ footer div a {
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
 
+    .homeimg {
+        width: 90%;
+    }
+
     /*
         game
     */
@@ -454,6 +494,23 @@ footer div a {
         display: block;
         height:60%;
         width: 90%;
+    }
+
+    /*
+      negozio
+    */
+
+    .gameszone .gameinfo img {
+        width: 15%;
+    }
+
+    .gameszone .gameinfo aside {
+        width: 70%;
+    }
+
+    .gameszone .gameinfo button {
+        width: 15%;
+        height: 35px;
     }
 
     /*gg*/
