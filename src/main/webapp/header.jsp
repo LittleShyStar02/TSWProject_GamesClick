@@ -5,15 +5,29 @@
 		<div class="header-logo">
 			<a href="index.jsp" class="header-logo-text">GamesClick</a>
 		</div>
+		<div class="logo-responsive">
+			<a href="index.jsp" class="header-logo-text">GC</a>
+		</div>
 		<ul class="header-ul">
 			<li>
-				<a href="negozio.jsp">Negozio</a>
+				<a href="negozio.jsp?start_name=NoFilter">Negozio</a>
 			</li>
 			<li>
 				<a href="assistenza.jsp">Assistenza</a>
 			</li>
 			<li>
 				<a href="informazioni.jsp">Informazioni</a>
+			</li>
+		</ul>
+		<ul class="header-responsive">
+			<li class="header-icon">
+				<a href="negozio.jsp?start_name=NoFilter"><img src="assets/images/store.png"></a>
+			</li>
+			<li class="header-icon">
+				<a href="assistenza.jsp"><img src="assets/images/support.png"></a>
+			</li>
+			<li class="header-icon">
+				<a href="informazioni.jsp"><img src="assets/images/info.png"></a>
 			</li>
 		</ul>
 		<%@ page import="it.project.bean.UserBean,it.project.model.UserModel" %>

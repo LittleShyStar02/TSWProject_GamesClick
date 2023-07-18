@@ -14,7 +14,7 @@
  	<div class="first-container center">
  		
  		<%@include file="errorbox.jsp" %>
- 		
+ 		<br><br>
  		<img class="homeimg" src="assets/images/logo1.png">
         <br>
         <br>

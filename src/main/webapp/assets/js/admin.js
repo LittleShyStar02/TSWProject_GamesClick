@@ -105,7 +105,7 @@ function visualize(firstToShow, secondToShow, dataType) {
             case 'user':
                 setTypeText('search_type_text', 'Ricerca Utenti');
                 setTypeText('label_datatype', "Ricerca un utente per nome/cognome/email");
-                setPlaceholder('search_datatype', "Nome/Cognome/Email utente");
+                setPlaceholder('search_datatype', "Email utente");
                 break;
         }
         setInputDataType(dataType);

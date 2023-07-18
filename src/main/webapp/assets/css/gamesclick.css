@@ -133,6 +133,10 @@ header nav {
     flex-direction: row;
 }
 
+.logo-responsive{
+    display: none;
+}
+
 .header-logo {
     margin: 1%;
     padding: 1%;
@@ -146,6 +150,10 @@ header nav {
     font-size: 26px;
     font-weight: bold;
     text-decoration: none;
+}
+
+.header-responsive {
+    display: none;
 }
 
 .header-ul {
@@ -415,14 +423,16 @@ footer div a {
     padding-left: 3%;
     position: relative;
     width: 90%;
-    border: white 1px solid;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    
 }
 
 .gameszone .gameinfo {
     display: flex;
     flex-direction: row;
+    border: white 1px solid;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 1%;
 }
 
 
@@ -477,6 +487,50 @@ footer div a {
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
+
+    /*
+        header
+    */
+
+    header nav {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-responsive{
+        display: block;
+    }
+
+
+    .header-logo{
+        display: none;
+    }
+
+    .header-ul {
+        display: none;
+    }
+
+    .header-responsive {
+        display: flex;
+        list-style-type: none;
+        flex-direction: row;
+    }
+
+    .header-responsive li {
+        display: flex;
+        padding-left: 12%;
+        padding-right: 14%;
+        width: 10%;
+    }
+
+    .header-icon 
+    {
+        width: 10%;
+        padding-left: 12%;
+    }
 
     .homeimg {
         width: 90%;

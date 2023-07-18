@@ -79,7 +79,7 @@
 		<br>
 		
         <fieldset class="fieldset-form" style="right: 3%;width: 90%;border: none;padding: 2%">
-          <legend style="font-size: 20px;color: pink;">Cosa vuoi aggiornare?</legend>
+          <legend style="font-size: 20px;color: pink;">Crea - Modifica - Cerca - Visualizza</legend>
           <form action="AdminPanel" method="post" id="firstForm" class="adminManager">
           	<input type="text" id="firstToShow" name="firstToShow" style="display: none;">
           	<input type="text" id="secondToShow" name="secondToShow" style="display: none;">

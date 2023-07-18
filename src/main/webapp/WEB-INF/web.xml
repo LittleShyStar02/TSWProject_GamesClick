@@ -148,4 +148,14 @@
     <servlet-name>AAccount</servlet-name>
     <url-pattern>/AAccount</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CercaProdotto</display-name>
+    <servlet-name>CercaProdotto</servlet-name>
+    <servlet-class>it.project.servlet.actions.CercaProdotto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CercaProdotto</servlet-name>
+    <url-pattern>/CercaProdotto</url-pattern>
+  </servlet-mapping>
 </web-app>

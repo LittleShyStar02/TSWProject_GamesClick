@@ -13,10 +13,10 @@
  	
  	<div class="first-container">
  		<div class="shop-bar" style="">
-			<form>
-				<label for="search">Cerca un gioco: </label>
-				<input type="text" id="search" name="search" placeholder="Inserisci il nome del gioco">
-				<input type="submit" value="Cerca">
+			<form action="CercaProdotto" method="post">
+				<label for="search" style="font-size: 18px;">Cerca un gioco: </label>
+				<input type="text" id="search" name="search" placeholder="Inserisci il nome del gioco" style="height: 18px;width: 200px;">
+				<input type="submit" value="Cerca" style="width: 50px;height: 22px;">
 			</form>
 		</div>
 		
@@ -26,19 +26,30 @@
 			<ul class="gameszone">
 				<%
 					Collection<GameBean> games = new GameModel().doRetrieveAll("ASC");
+				    String button,start;
+				    if(request.getSession().getAttribute("userEmail") != null) button = "Add to Cart";
+				    else button = "Locked";
+				    
+				    start = request.getParameter("start_name");
+				    if(start.equals("NoFilter")) start = "";
+				    
 				    if(!games.isEmpty())
 				    {
 				    	for(GameBean game : games)
 				    	{
-				    		out.println("<li class=\"gameinfo\">");
-				    		out.println("<img src=\"" + game.getPreview() + "\">");
-				    		out.println("<aside>");
-				    		out.println("<h4>" + game.getName()+"</h4>");
-				    		out.println("<p> Costo: " + game.getPrice() + "<br>" + game.getDescription() + "</p>");
-				    		out.println("</aside>");
-				    		out.println("<button onclick=\"setValue('"+new GameModel().doRetrieveKey(game.getName())+"')\">Add to Cart</button>");
-				    		out.println("<br>");
-				    		out.println("</li>");
+				    		if(game.getName().startsWith(start))
+				    		{
+				    			out.println("<li class=\"gameinfo\">");
+					    		out.println("<img src=\"" + game.getPreview() + "\">");
+					    		out.println("<aside>");
+					    		out.println("<h4><a href=\"game.jsp?gamename="+game.getName()+"\" style=\"color: red;\">" + game.getName()+"</a></h4>");
+					    		out.println("<p> Costo: " + game.getPrice() + "<br>" + game.getDescription() + "</p>");
+					    		out.println("</aside>");
+					    		
+					    		out.println("<button onclick=\"setValue('"+new GameModel().doRetrieveKey(game.getName())+"')\">"+button+"</button>");
+					    		out.println("<br>");
+					    		out.println("</li>");
+				    		}
 				    	}
 				    	
 				    }
