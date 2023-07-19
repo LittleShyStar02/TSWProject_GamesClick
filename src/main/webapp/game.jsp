@@ -74,10 +74,10 @@
  			<p><% out.print(game.getDescription()); %></p>
  			
  			<%
- 				if(request.getSession().getAttribute("userEmail") != null)
- 				{
- 					
- 				}
+ 				String button;
+ 				if(request.getSession().getAttribute("userEmail") != null) button = "Add to Cart";
+		    	else button = "Locked";
+ 				out.println("<br><br><button onclick=\"setValue('"+new GameModel().doRetrieveKey(game.getName())+"')\" style=\"width: 20%;height: 35px\">"+button+"</button>");
  			%>
  			
  		</div>
