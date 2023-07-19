@@ -38,7 +38,7 @@
 				UserBean user = new UserModel().doRetrieveByKey(email);
 				if(user.isAdmin())
 				{
-					out.print("<div class=\"header-icon\"><a href=\"admin.jsp\" class=\"header-image-text\"><img src=\"assets/images/staff_icon.png\" class=\"header-image\"></a></div>");
+					out.print("<div class=\"header-icon\"><a href=\"admin.jsp\" class=\"header-image-text\" style=\"padding-left:75%\"><img src=\"assets/images/staff_icon.png\" class=\"header-image\"></a></div>");
 				}
 			}
 		%>
