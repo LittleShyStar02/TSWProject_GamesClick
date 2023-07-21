@@ -21,13 +21,13 @@
 		</ul>
 		<ul class="header-responsive">
 			<li class="header-icon">
-				<a href="negozio.jsp?start_name=NoFilter"><img src="assets/images/store.png"></a>
+				<a href="negozio.jsp?start_name=NoFilter"><img src="assets/images/store.png" class="iconresp" alt=""></a>
 			</li>
 			<li class="header-icon">
-				<a href="assistenza.jsp"><img src="assets/images/support.png"></a>
+				<a href="assistenza.jsp"><img src="assets/images/support.png" class="iconresp" alt=""></a>
 			</li>
 			<li class="header-icon">
-				<a href="informazioni.jsp"><img src="assets/images/info.png"></a>
+				<a href="informazioni.jsp"><img src="assets/images/info.png" class="iconresp" alt=""></a>
 			</li>
 		</ul>
 		<%@ page import="it.project.bean.UserBean,it.project.model.UserModel" %>
@@ -38,11 +38,11 @@
 				UserBean user = new UserModel().doRetrieveByKey(email);
 				if(user.isAdmin())
 				{
-					out.print("<div class=\"header-icon\"><a href=\"admin.jsp\" class=\"header-image-text\" style=\"padding-left:75%\"><img src=\"assets/images/staff_icon.png\" class=\"header-image\"></a></div>");
+					out.print("<div class=\"header-icon\"><a href=\"admin.jsp\" class=\"header-image-text\" style=\"width: 35px;height; 35px;padding-left:50%\"><img src=\"assets/images/staff_icon.png\" class=\"header-image\"></a></div>");
 				}
 			}
 		%>
-		<div class="header-icon">
+		<div class="header-icon <% if(email == null) out.print("basket"); %>">
 			<a href="carrello.jsp" class="header-image-text"><img src="assets/images/icon_cart.png" class="header-image" alt="Immagine non trovata"></a>
 		</div>
 		<div class="account-dropdown header-icon">

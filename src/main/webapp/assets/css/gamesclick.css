@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+.autocomplete-div {
+    display: none;
+}
+
 /*
   BIG CONTAINER STYLE
 */
@@ -133,7 +137,7 @@ header nav {
     flex-direction: row;
 }
 
-.logo-responsive{
+.logo-responsive {
     display: none;
 }
 
@@ -207,7 +211,6 @@ header nav {
     height: auto;
     width: 60%;
 }
-
 
 /*
   ACCOUNT DROPDOWN
@@ -414,8 +417,9 @@ footer div a {
 */
 .shop-bar {
     position: relative;
-    padding: 3%;
-    top: 25%;
+    padding-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 1%;
 }
 
 .gameszone {
@@ -423,7 +427,7 @@ footer div a {
     padding-left: 3%;
     position: relative;
     width: 90%;
-    
+
 }
 
 .gameszone .gameinfo {
@@ -481,12 +485,16 @@ footer div a {
   GAME
 */
 
-.gamesec{
+.gamesec {
     padding: 5%;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
+
+    .autocomplete-text {
+        right: 0%;
+    }
 
     /*
         header
@@ -500,12 +508,12 @@ footer div a {
         text-align: center;
     }
 
-    .logo-responsive{
+    .logo-responsive {
         display: block;
     }
 
 
-    .header-logo{
+    .header-logo {
         display: none;
     }
 
@@ -526,13 +534,24 @@ footer div a {
         width: 10%;
     }
 
-    .header-icon 
-    {
+    .header-icon {
         width: 10%;
+    }
+
+    .header-image,
+    .iconresp {
+        height: 35px;
+        width: 35px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 
     .homeimg {
         width: 90%;
+    }
+
+    .basket {
+        padding-left: 10%;
     }
 
     /*
@@ -546,15 +565,23 @@ footer div a {
         text-align: center;
     }
 
-    .gameimg{
+    .gameimg {
         display: block;
-        height:60%;
+        height: 60%;
         width: 90%;
     }
 
     /*
       negozio
     */
+
+    .shop-bar form {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
 
     .gameszone .gameinfo img {
         width: 15%;
@@ -570,6 +597,18 @@ footer div a {
     }
 
     /*gg*/
+
+    .textarea-lock {
+        width: 90%;
+    }
+
+    .form-w1 input[type=email],
+    .form-w1 input[type=password],
+    .form-w1 input[type=text] {
+        padding: 8px;
+        width: 270px;
+    }
+
 
     .form-w1 input[type=button],
     .form-w1 input[type=submit],
@@ -595,6 +634,12 @@ footer div a {
     .adminManager input[type=submit] {
         display: inline-block;
         width: 100%;
+    }
+
+    .adminManager input[type=email],
+    .adminManager input[type=password],
+    .adminManager input[type=text] {
+        width: 220px;
     }
 
 }

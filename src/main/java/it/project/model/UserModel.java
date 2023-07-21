@@ -102,13 +102,14 @@ public class UserModel implements EntityBeanModel<UserBean>
 				{
 					user.setAdmin(set2.getRow() != 0);
 				}
-				ps2.close();
 			}
 
 		} finally {
 			try {
 				if (ps != null)
 					ps.close();
+				if(ps2 != null)
+					ps2.close();
 			} finally {
 				ConnectionPool.releaseConnection(conn);
 			}
@@ -177,13 +178,14 @@ public class UserModel implements EntityBeanModel<UserBean>
 				{
 					user.setAdmin(set2.getRow() != 0);
 				}
-				ps2.close();
 			}
 			
 		} finally {
 			try {
 				if (ps != null)
 					ps.close();
+				if(ps2 != null)
+					ps2.close();;
 			} finally {
 				ConnectionPool.releaseConnection(conn);
 			}

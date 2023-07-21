@@ -108,10 +108,10 @@
           		<label for="search_datatype" id="label_datatype"></label>
           		<br>
           		<input type="text" id="search_datatype" name="search_datatype" class="inb20" required>
+          		<div id="autocomplete-div" class="autocomplete-div" style="z-index: 10;position: absolute;"></div>
+          		<br><br>
           		<input type="submit" value="Trova" class="admin-binput">
-          		<div id="autocomplete-div" class="autocomplete-div">
-          			
-          		</div>
+          		<br><br>
           		<div id="catinfo" class="hidecont">
           			<%@page import="it.project.bean.CategoryBean,it.project.model.CategoryModel" %>
         			<%

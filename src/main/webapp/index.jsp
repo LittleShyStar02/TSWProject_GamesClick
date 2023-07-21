@@ -15,10 +15,10 @@
  		
  		<%@include file="errorbox.jsp" %>
  		<br><br>
- 		<img class="homeimg" src="assets/images/logo1.png">
+ 		<img class="homeimg" src="assets/images/logo1.png" alt="">
         <br>
         <br>
-        <img class="homeimg"src="assets/images/logo2.png">
+        <img class="homeimg"src="assets/images/logo2.png" alt="">
  		
  	</div>
  	

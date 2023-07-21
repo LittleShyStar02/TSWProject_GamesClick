@@ -14,9 +14,9 @@
  	<div class="first-container">
  		<div class="shop-bar" style="">
 			<form action="CercaProdotto" method="post">
-				<label for="search" style="font-size: 18px;">Cerca un gioco: </label>
+				<label for="search" style="font-size: 18px;display: block:">Cerca un gioco: </label>
 				<input type="text" id="search" name="search" placeholder="Inserisci il nome del gioco" style="height: 18px;width: 200px;">
-				<input type="submit" value="Cerca" style="width: 50px;height: 22px;">
+				<input type="submit" value="Cerca" style="width: 50px;height: 22px;display: block:">
 			</form>
 		</div>
 		
@@ -38,7 +38,7 @@
 				    	{
 				    		if(button == null)
 				    		{
-				    			button = "Add To Cart";
+				    			button = "<a href=\"AddCart?gamename="+game.getName()+"\">Add To Cart</a>";
 				    		}
 				    		if(game.getName().startsWith(start))
 				    		{

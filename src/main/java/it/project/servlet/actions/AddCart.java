@@ -1,7 +1,6 @@
 package it.project.servlet.actions;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -51,7 +50,7 @@ public class AddCart extends HttpServlet {
 		}
 		
 		request.getSession().setAttribute("cart", carrello);
-		request.getServletContext().getRequestDispatcher("/negozio.jsp?start_name=NoFilter").forward(request, response);;
+		request.getServletContext().getRequestDispatcher("/negozio.jsp?start_name=NoFilter").forward(request, response);
 		
 	}
 
