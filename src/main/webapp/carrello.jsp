@@ -16,7 +16,20 @@
  	
  	<div class="first-container center">
  	
+ 		<%@ page import="it.project.model.Carrello" %>
+ 		<%
  		
+ 			Carrello carrello;
+ 			if(request.getSession().getAttribute("cart") != null)
+ 			{
+ 				carrello = (Carrello) request.getSession().getAttribute("cart");
+ 				for(String key : carrello.getProducts().keySet())
+ 				{
+ 					out.print(key + "<br>");
+ 				}
+ 			}
+ 		
+ 		%>
  		
  	</div>
  	

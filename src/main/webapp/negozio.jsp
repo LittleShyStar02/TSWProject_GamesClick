@@ -26,9 +26,8 @@
 			<ul class="gameszone">
 				<%
 					Collection<GameBean> games = new GameModel().doRetrieveAll("ASC");
-				    String button,start;
-				    if(request.getSession().getAttribute("userEmail") != null) button = "Add to Cart";
-				    else button = "Locked";
+				    String button = null,start;
+				    if(request.getSession().getAttribute("userEmail") == null) button = "Locked";
 				    
 				    start = request.getParameter("start_name");
 				    if(start.equals("NoFilter")) start = "";
@@ -37,18 +36,21 @@
 				    {
 				    	for(GameBean game : games)
 				    	{
+				    		if(button == null)
+				    		{
+				    			button = "Add To Cart";
+				    		}
 				    		if(game.getName().startsWith(start))
 				    		{
-				    			out.println("<li class=\"gameinfo\">");
-					    		out.println("<img src=\"" + game.getPreview() + "\">");
-					    		out.println("<aside>");
-					    		out.println("<h4><a href=\"game.jsp?gamename="+game.getName()+"\" style=\"color: red;\">" + game.getName()+"</a></h4>");
-					    		out.println("<p> Costo: " + game.getPrice() + "<br>" + game.getDescription() + "</p>");
-					    		out.println("</aside>");
-					    		
-					    		out.println("<button onclick=\"setValue('"+new GameModel().doRetrieveKey(game.getName())+"')\">"+button+"</button>");
-					    		out.println("<br>");
-					    		out.println("</li>");
+				    			out.print("<li class=\"gameinfo\">");
+					    		out.print("<img src=\"" + game.getPreview() + "\">");
+					    		out.print("<aside>");
+					    		out.print("<h4><a href=\"game.jsp?gamename="+game.getName()+"\" style=\"color: red;\">" + game.getName()+"</a></h4>");
+					    		out.print("<p> Costo: " + game.getPrice() + "<br>" + game.getDescription() + "</p>");
+					    		out.print("</aside>");
+					    		out.print("<button>"+button+"</button>");
+					    		out.print("<br>");
+					    		out.print("</li>");
 				    		}
 				    	}
 				    	
