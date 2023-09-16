@@ -43,7 +43,7 @@ public class AddCart extends HttpServlet {
 		
 		try {
 			GameBean game = new GameModel().doRetrieveByKey(name);
-			carrello.addProduct(game, 0);
+			carrello.addProduct(game);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

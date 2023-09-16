@@ -20,15 +20,21 @@ public class Carrello
 		quantity = new HashMap<>();
 	}
 	
+	public void addProduct(GameBean game)
+	{
+		addProduct(game,1);
+	}
+	
 	public void addProduct(GameBean game,int amount)
 	{
 		if(!product.containsKey(game.getName()))
 		{
 			product.put(game.getName(), game);
-		}
-		if(!product.containsKey(game.getName()) && amount != 0)
-		{
-			quantity.put(game.getName(), amount);
+			if(amount != 0)
+			{
+				quantity.put(game.getName(), amount);
+			}
+			else quantity.put(game.getName(), 1);
 		}
 	}
 	
@@ -53,6 +59,11 @@ public class Carrello
 		{
 			quantity.remove(game.getName(),quantity.get(game.getName()));
 		}
+	}
+	
+	public boolean isEmpty()
+	{
+		return product.isEmpty();
 	}
 
 }

@@ -455,6 +455,27 @@ footer div a {
     height: 40px;
 }
 
+.gameszone .gameinfo .qinput {
+	width: 30px;
+    height: 15px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.qsubmit {
+	height: 40px;
+	width: 180px;
+}
+
+.qremove {
+	height: 15px;
+	width: 30px;
+}
+
+.carrelloform {
+	width: 98%;
+}
+
 /*
   ACCOUNT STYLE
 */
@@ -570,6 +591,15 @@ footer div a {
         height: 60%;
         width: 90%;
     }
+    
+    .carrelloform {
+		width: 98%;
+	}
+    
+    .qremove {
+		height: 38px;
+		width: 30px;
+	}
 
     /*
       negozio
@@ -591,7 +621,8 @@ footer div a {
         width: 70%;
     }
 
-    .gameszone .gameinfo button {
+    .gameszone .gameinfo button,
+    .gameszone .gameinfo .qinput {
         width: 15%;
         height: 35px;
     }
