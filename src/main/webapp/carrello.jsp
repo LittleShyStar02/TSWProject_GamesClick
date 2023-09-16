@@ -49,7 +49,6 @@
  						}
  						String idp = "id"+String.valueOf(product);
  						String qp = "q"+String.valueOf(product);
- 						String dp = "del"+String.valueOf(product);
  						out.print("<li class=\"gameinfo\">");
  	    				out.print("<img src=\"" + bean.getPreview() + "\">");
  	    				out.print("<aside>");
@@ -57,7 +56,7 @@
  	    				out.print("<p> Costo: " + bean.getPrice() + "<br>" + bean.getDescription() + "</p>");
  	    				out.print("</aside>");
  	    				out.print("<input type=\"hidden\" name=\"" + idp + "\" id=\"" + idp + "\" value=\"" + key + "\">");
- 	    				out.print("Quantità <br><input type=\"number\" class=\"qinput\" value=\"" + cart.getQuantity().get(key) + "\" name=\"" + qp + "\" id=\"" + qp + "\">");
+ 	    				out.print("Quantità <br><input type=\"number\" class=\"qinput\" value=\"" + cart.getProducts().get(key) + "\" name=\"" + qp + "\" id=\"" + qp + "\" min=1>");
  	    				out.print("<br>");
  	    				out.print("<input type=\"submit\" class=\"qremove\" value=\"X\" onclick=\"deleteGame('" + key + "')\">");
  	    				out.print("</li>");
@@ -65,6 +64,7 @@
  					out.print("</ul>");
  					
  					out.print("<br><br>");
+ 					out.print("<input type=\"submit\" class=\"qsubmit\" value=\"Salva il carrello\" onclick=\"updateCart()\">");
  					out.print("<input type=\"submit\" class=\"qsubmit\" value=\"Elimina il carrello\" onclick=\"cartDelete()\">");
  					out.print("<input type=\"submit\" class=\"qsubmit\" value=\"Prosegui con l'acquisto\" onclick=\"goToCheckOut()\">");
  				}

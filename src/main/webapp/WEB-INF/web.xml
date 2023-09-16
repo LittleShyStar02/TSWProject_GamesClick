@@ -168,4 +168,44 @@
     <servlet-name>AddCart</servlet-name>
     <url-pattern>/AddCart</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCartGame</display-name>
+    <servlet-name>DeleteCartGame</servlet-name>
+    <servlet-class>it.project.servlet.actions.DeleteCartGame</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCartGame</servlet-name>
+    <url-pattern>/DeleteCartGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GoCheckOut</display-name>
+    <servlet-name>GoCheckOut</servlet-name>
+    <servlet-class>it.project.servlet.redirect.GoCheckOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoCheckOut</servlet-name>
+    <url-pattern>/GoCheckOut</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetCart</display-name>
+    <servlet-name>ResetCart</servlet-name>
+    <servlet-class>it.project.servlet.actions.ResetCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetCart</servlet-name>
+    <url-pattern>/ResetCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateCart</display-name>
+    <servlet-name>UpdateCart</servlet-name>
+    <servlet-class>it.project.servlet.actions.UpdateCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCart</servlet-name>
+    <url-pattern>/UpdateCart</url-pattern>
+  </servlet-mapping>
 </web-app>

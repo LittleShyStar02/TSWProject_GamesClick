@@ -32,7 +32,9 @@ public class AAccount extends HttpServlet {
 		
 		String message = null;
 		
-		String name, info, email;
+		String name;
+		String info;
+		String email;
 		
 		name = request.getParameter("payname");
 		info = request.getParameter("payinfo");

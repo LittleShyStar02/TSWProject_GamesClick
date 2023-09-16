@@ -12,11 +12,9 @@ import com.google.gson.Gson;
 import it.project.bean.CategoryBean;
 import it.project.bean.ConsoleBean;
 import it.project.bean.GameBean;
-import it.project.bean.UserBean;
 import it.project.model.CategoryModel;
 import it.project.model.ConsoleModel;
 import it.project.model.GameModel;
-import it.project.model.UserModel;
 
 /**
  * Servlet implementation class AjaxCategory

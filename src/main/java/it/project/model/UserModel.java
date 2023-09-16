@@ -185,7 +185,7 @@ public class UserModel implements EntityBeanModel<UserBean>
 				if (ps != null)
 					ps.close();
 				if(ps2 != null)
-					ps2.close();;
+					ps2.close();
 			} finally {
 				ConnectionPool.releaseConnection(conn);
 			}

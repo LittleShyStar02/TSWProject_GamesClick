@@ -5,17 +5,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import it.project.model.Carrello;
 
 /**
- * Servlet implementation class CercaProdotto
+ * Servlet implementation class DeleteCartGame
  */
-public class CercaProdotto extends HttpServlet {
+public class ResetCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CercaProdotto() {
+    public ResetCart() {
         super();
     }
 
@@ -24,13 +25,10 @@ public class CercaProdotto extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String search = request.getParameter("search");
-		if(search == null || search.equals(""))
-		{
-			search = "NoFilter";
-		}
 		
-		request.getServletContext().getRequestDispatcher("/negozio.jsp?start_name="+search).forward(request, response);
+    	request.getSession().setAttribute("cart", new Carrello());
+		request.getSession().setAttribute("userMessage", "Carrello resettato correttamente");
+		request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	/**

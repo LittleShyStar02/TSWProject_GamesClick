@@ -9,15 +9,13 @@ public class Carrello
 	
 	@Override
 	public String toString() {
-		return "Carrello [product=" + product + ", quantity=" + quantity + "]";
+		return "Carrello [product=" + product + "]";
 	}
 
-	private HashMap<String,GameBean> product;
-	private HashMap<String,Integer> quantity;
+	private HashMap<String,Integer> product;
 	
 	public Carrello(){
 		product = new HashMap<>();
-		quantity = new HashMap<>();
 	}
 	
 	public void addProduct(GameBean game)
@@ -25,40 +23,42 @@ public class Carrello
 		addProduct(game,1);
 	}
 	
-	public void addProduct(GameBean game,int amount)
+	public void addProduct(GameBean game,int quantity)
 	{
 		if(!product.containsKey(game.getName()))
 		{
-			product.put(game.getName(), game);
-			if(amount != 0)
+			if(quantity <= 0)
 			{
-				quantity.put(game.getName(), amount);
+				product.put(game.getName(), 1);
 			}
-			else quantity.put(game.getName(), 1);
+			else
+			{
+				product.put(game.getName(), quantity);
+			}
 		}
 	}
 	
-	public HashMap<String,GameBean> getProducts()
+	public HashMap<String,Integer> getProducts()
 	{
 		return product;
-	}
-	
-	public HashMap<String,Integer> getQuantity()
-	{
-		return quantity;
 	}
 	
 	public void removeProduct(GameBean game)
 	{
 		if(product.containsKey(game.getName()))
 		{
-			product.remove(game.getName(), game);
+			product.remove(game.getName());
 		}
 		
-		if(quantity.containsKey(game.getName()))
+	}
+	
+	public void updateGame(GameBean game,int quantity)
+	{
+		if(product.containsKey(game.getName()))
 		{
-			quantity.remove(game.getName(),quantity.get(game.getName()));
+			product.replace(game.getName(), quantity);
 		}
+		
 	}
 	
 	public boolean isEmpty()

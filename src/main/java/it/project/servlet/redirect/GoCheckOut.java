@@ -1,4 +1,4 @@
-package it.project.servlet.actions;
+package it.project.servlet.redirect;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -7,15 +7,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class CercaProdotto
+ * Servlet implementation class GoCheckOut
  */
-public class CercaProdotto extends HttpServlet {
+public class GoCheckOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CercaProdotto() {
+    public GoCheckOut() {
         super();
     }
 
@@ -24,13 +24,7 @@ public class CercaProdotto extends HttpServlet {
 	 */
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String search = request.getParameter("search");
-		if(search == null || search.equals(""))
-		{
-			search = "NoFilter";
-		}
-		
-		request.getServletContext().getRequestDispatcher("/negozio.jsp?start_name="+search).forward(request, response);
+		request.getServletContext().getRequestDispatcher("/checkout.jsp").forward(request, response);
 	}
 
 	/**

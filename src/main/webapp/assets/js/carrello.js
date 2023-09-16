@@ -12,3 +12,8 @@ function goToCheckOut()
 {
 	document.getElementById('carrelloform').action = 'GoCheckOut'; 
 }
+
+function updateCart()
+{
+	document.getElementById('carrelloform').action = 'UpdateCart';
+}
