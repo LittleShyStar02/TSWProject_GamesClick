@@ -36,10 +36,7 @@
 				    {
 				    	for(GameBean game : games)
 				    	{
-				    		if(button == null)
-				    		{
-				    			button = "<a href=\"AddCart?gamename="+game.getName()+"\">Add To Cart</a>";
-				    		}
+				    		button = "<a href=\"AddCart?gamename="+game.getName()+"\">Add To Cart</a>";
 				    		if(game.getName().startsWith(start))
 				    		{
 				    			out.print("<li class=\"gameinfo\">");
