@@ -218,4 +218,14 @@
     <servlet-name>CompleteOrder</servlet-name>
     <url-pattern>/CompleteOrder</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OrdersVisualizer</display-name>
+    <servlet-name>OrdersVisualizer</servlet-name>
+    <servlet-class>it.project.servlet.redirect.OrdersVisualizer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdersVisualizer</servlet-name>
+    <url-pattern>/OrdersVisualizer</url-pattern>
+  </servlet-mapping>
 </web-app>

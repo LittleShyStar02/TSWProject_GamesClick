@@ -78,6 +78,34 @@ public class GameModel implements EntityBeanModel<GameBean>
 		}
 		return game;
 	}
+	
+	public synchronized String doRetrieveNameById(int id) throws SQLException 
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String name = null;
+
+		try {
+			conn = ConnectionPool.getConnection();
+			ps = conn.prepareStatement("SELECT * FROM Gioco WHERE IDGioco = ?");
+			ps.setInt(1, id);
+
+			ResultSet set = ps.executeQuery();
+
+			while (set.next()) 
+			{
+				name = set.getString("Nome");
+			}
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} finally {
+				ConnectionPool.releaseConnection(conn);
+			}
+		}
+		return name;
+	}
 
 	@Override
 	public synchronized Collection<GameBean> doRetrieveAll(String order) throws SQLException 

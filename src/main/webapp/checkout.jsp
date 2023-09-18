@@ -6,12 +6,6 @@
 
 <head>
 	<%@include file="head.jsp" %>
-	<script>
-		function select(id)
-		{
-			document.getElementById('selected').value = id;
-		}
-	</script>
 </head>
 
 <body>
@@ -27,15 +21,30 @@
  			<%
  				Carrello cart = (Carrello) request.getSession().getAttribute("cart");
  				double price = 0.0;
+ 				double amount;
  				
  				GameBean game;
+ 				out.print("<ul class=\"gameszone\">");
  				for(String key : cart.getProducts().keySet())
  				{
  					game = new GameModel().doRetrieveByKey(key);
- 					if(game == null) continue;
- 					price += game.getPrice()*cart.getProducts().get(key);
- 					out.print("<p class=\"checkout-text\">"+cart.getProducts().get(key)+"x"+game.getName()+" - €"+game.getPrice()*cart.getProducts().get(key)+"</p><br>");
+ 					if(game == null) {
+						out.print("console.log('Errore durante il caricamento del prodotto'"+key+")");
+						continue;
+					}
+ 					
+ 					amount = game.getPrice()*cart.getProducts().get(key);
+ 					price += amount;
+ 					out.print("<li class=\"gameinfo\">");
+	    			out.print("<img src=\"" + game.getPreview() + "\">");
+	    			out.print("<aside>");
+	    			out.print("<h4>" + game.getName()+"</h4>");
+	    			out.print("<p>" + game.getDescription() + "</p>");
+	    			out.print("</aside>");
+	    			out.print("<p>Prezzo "+amount+"€ </p>");
+	    			out.print("</li>");
  				}
+ 				out.print("</ul>");
  				out.println("<br><br>");
  				out.println("<p class=\"checkout-text\">Totale   " + price+"</p>");
  			
@@ -43,16 +52,21 @@
  			<br><br><br>
  			<form action="CompleteOrder" method="POST">
  				<input type="hidden" id="selected" name="selected">
- 				<label>Seleziona il metodo di pagamento</label><br>
+ 				<label>Seleziona il metodo di pagamento</label>
+ 				<br><br>
  				<%
  					String name;
  					Collection<MethodBean> coll = new MethodModel().doRetrieveAll("ASC");
  					coll = coll.stream().filter(b -> b.getEmail().equals(request.getSession().getAttribute("userEmail"))).toList();
+ 					int method = 1;
+ 					String m = "method";
  					for(MethodBean bean : coll)
  					{
+ 						String tmp = m+String.valueOf(method);
  						name = bean.getName();
- 						out.print("<input type=\"radio\" id=\""+name+"\" name=\""+name+"\" onclick=\"select('"+name+"')\">");
- 						out.print("<label for=\""+name+"\">"+name+"</label><br>");
+ 						out.print("<input type=\"radio\" id=\""+tmp+"\" name=\""+tmp+"\" value=\""+name+"\">");
+ 						out.print("<label for=\""+tmp+"\">"+name+"</label><br>");
+ 						method++;
  					}
  					
  				%>

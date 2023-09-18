@@ -27,7 +27,6 @@
 				<%
 					Collection<GameBean> games = new GameModel().doRetrieveAll("ASC");
 				    String button = null,start;
-				    if(request.getSession().getAttribute("userEmail") == null) button = "Locked";
 				    
 				    start = request.getParameter("start_name");
 				    if(start.equals("NoFilter")) start = "";
@@ -36,7 +35,8 @@
 				    {
 				    	for(GameBean game : games)
 				    	{
-				    		button = "<a href=\"AddCart?gamename="+game.getName()+"\">Add To Cart</a>";
+				    		if(request.getSession().getAttribute("userEmail") == null) button = "Locked";
+				    		else button = "<a href=\"AddCart?gamename="+game.getName()+"\">Add To Cart</a>";
 				    		if(game.getName().startsWith(start))
 				    		{
 				    			out.print("<li class=\"gameinfo\">");

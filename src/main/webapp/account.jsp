@@ -34,7 +34,7 @@
  		<ul class="admin-ul" style="list-style-type: none;">
  			<li><button class="account-button" onclick="visualize('userprofile')">Profilo</button></li>
  			<li><button class="account-button" onclick="visualize('payments')">Metodi di pagamento</button></li>
- 			<li><button class="account-button" onclick="visualize('orders')">Ordini</button></li>
+ 			<li><a href="orders.jsp?odate=DESC&client=NoFilter"><button class="account-button">Ordini</button></a></li>
  		</ul>
  		
  		<br><br>
@@ -85,13 +85,6 @@
  		
  		</div>
  		
- 		<div id="orders" class="hidecont">
- 		
- 			
- 		
- 		</div>
- 		
-		
 	</div>
  	
  	<%@include file="footer.jsp" %>

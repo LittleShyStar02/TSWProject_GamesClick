@@ -1,15 +1,19 @@
 package it.project.servlet.actions;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.Set;
+
+import it.project.model.Carrello;
+import it.project.model.AcquistoModel;
+import it.project.model.GameModel;
+import it.project.model.MethodModel;
+import it.project.model.UserModel;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import it.project.bean.GameBean;
-import it.project.model.Carrello;
-import it.project.model.GameModel;
 
 /**
  * Servlet implementation class DeleteCartGame
@@ -31,14 +35,37 @@ public class CompleteOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
     	Carrello cart = (Carrello) request.getSession().getAttribute("cart");
-    	GameBean game;
+    	String method_name = null;
+    	for(String key : request.getParameterMap().keySet())
+    	{
+    		if(key.startsWith("method")) method_name = request.getParameter(key);
+    	}
+    	String email_user = (String) request.getSession().getAttribute("userEmail");
     	
-    	//salvare ordini
-    	
+    	try {
+			int IDUser = new UserModel().doRetrieveKey(email_user);
+			int IDMethod = new MethodModel().doRetrieveKey(method_name,email_user,email_user);
+	   
+			AcquistoModel amodel = new AcquistoModel();
+	    	GameModel model = new GameModel();;
+	    	int IDGame;
+	    	
+	    	Set<String> keys = cart.getProducts().keySet();
+	    	
+	    	for(String key : keys)
+	    	{
+	    		
+	    		IDGame = model.doRetrieveKey(key);
+	    		amodel.doSave(IDUser, IDGame, IDMethod, cart.getProducts().get(key), new Date());
+	    	}
+	    	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     	
     	request.getSession().setAttribute("cart", new Carrello());
-    	request.getSession().setAttribute("userMessafe", "Acquisto completato correttamente");
-    	request.getServletContext().getRequestDispatcher("/carrello.jsp").forward(request, response);
+    	request.getSession().setAttribute("userMessage", "Acquisto completato correttamente");
+    	request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     	
 	}
 

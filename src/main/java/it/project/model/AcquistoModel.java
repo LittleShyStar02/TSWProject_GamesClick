@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedList;
 
 import it.project.Utility;
@@ -13,7 +14,7 @@ import it.project.storage.ConnectionPool;
 
 public class AcquistoModel {
 	
-	public synchronized Collection<AcquistoBean> doRetrieveAll() throws SQLException 
+	public synchronized Collection<AcquistoBean> doRetrieveAll(String order) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -23,7 +24,7 @@ public class AcquistoModel {
 		{
 			buys = new LinkedList<>();
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Acquisto");
+			ps = conn.prepareStatement("SELECT * FROM Acquisto ORDER BY DataAcquisto " + order);
 			ResultSet set = ps.executeQuery();
 
 			while (set.next()) 
@@ -49,24 +50,26 @@ public class AcquistoModel {
 		return buys;
 	}
 	
-	public synchronized boolean doSave(AcquistoBean entity) throws SQLException 
+	public synchronized boolean doSave(int IDUtente, int IDGioco, int IDMetodo, int quantity, Date date) throws SQLException 
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean ok = false;
 		try {
-			
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("INSERT INTO Utente(IDUtente, IDGioco, IDMetodo, Quantita, DataAcquisto) VALUES (?, ?, ?, ?, ?)");
-			ps.setInt(1, entity.getIDUtente());
-			ps.setInt(2, entity.getIDGioco());
-			ps.setInt(3, entity.getIDMetodo());
-			ps.setInt(4, entity.getQuantity());
-			ps.setString(5,Utility.dateToMysql(entity.getDate()));
+			ps = conn.prepareStatement("INSERT INTO Acquisto(IDUtente, IDGioco, IDMetodo, Quantita, DataAcquisto) VALUES(?, ?, ?, ?, ?)");
+			ps.setInt(1, IDUtente);
+			ps.setInt(2, IDGioco);
+			ps.setInt(3, IDMetodo);
+			ps.setInt(4, quantity);
+			ps.setString(5,Utility.dateToMysql(date));
 			ps.executeUpdate();
 			conn.commit();
 			ok = true;
-		} finally {
+		} 
+		catch(Exception e){
+			e.printStackTrace();
+		}finally {
 			try {
 				if (ps != null)
 					ps.close();

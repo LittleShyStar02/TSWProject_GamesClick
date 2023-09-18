@@ -140,7 +140,7 @@ public class MethodModel implements EntityBeanModel<MethodBean>
 	}
 
 	@Override
-	public int doRetrieveKey(String name)
+	public int doRetrieveKey(String info) throws SQLException
 	{
 		return -1;
 	}
@@ -153,7 +153,7 @@ public class MethodModel implements EntityBeanModel<MethodBean>
 
 		try {
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM Metodo Nome = ? AND Info = ? AND IDUtente = ?");
+			ps = conn.prepareStatement("SELECT * FROM Metodo WHERE Nome = ? AND Info = ? AND IDUtente = ?");
 			ps.setString(1, name);
 			ps.setString(2, info);
 			ps.setInt(3, new UserModel().doRetrieveKey(email));
