@@ -22,7 +22,7 @@
 		
 		<br><br><br>
 		
-		<%@page import="java.util.Collection,it.project.bean.GameBean,it.project.model.GameModel" %>
+		<%@page import="it.project.Utility,java.util.Collection,it.project.bean.GameBean,it.project.model.GameModel" %>
 			<ul class="gameszone">
 				<%
 					Collection<GameBean> games = new GameModel().doRetrieveAll("ASC");
@@ -44,6 +44,8 @@
 					    		out.print("<aside>");
 					    		out.print("<h4><a href=\"game.jsp?gamename="+game.getName()+"\" style=\"color: red;\">" + game.getName()+"</a></h4>");
 					    		out.print("<p> Costo: " + game.getPrice() + "<br>" + game.getDescription() + "</p>");
+					    		out.print("<p> Data Rilascio: "+ Utility.dateToString(game.getReleaseDate()) +"</p>");
+					    		out.print("<p> Età Minima: " + game.getMinAge() + "<p>");
 					    		out.print("</aside>");
 					    		out.print("<button>"+button+"</button>");
 					    		out.print("<br>");
